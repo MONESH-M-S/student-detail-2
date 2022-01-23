@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material.module';
 import { PrimengModule } from './primeng.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PrimengModule } from './primeng.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    PrimengModule
+    PrimengModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

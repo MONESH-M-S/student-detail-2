@@ -1,1 +1,53 @@
-<p>home works!</p>
+<div class="container mt-5">
+  <div class="logo">
+    <img
+      src="assets/1565787142222 (1) (2).png"
+      alt="Kongu Engineering College"
+    />
+    <div class="title">
+      <h1>Kongu Engineering College</h1>
+      <p>Perundurai, Erode - 638060.</p>
+    </div>
+    <img
+      src="assets/dea926_fc1e0f87b7314fc9be94826a3460252e (2).gif"
+      alt="Kongu Engineering College"
+    />
+  </div>
+  <div class="admin">
+    <h3>If You're Admin, <a routerLink="/admin">Click here</a></h3>
+  </div>
+  <div class="main"></div>
+  <div class="form">
+    <h1>Student's Section</h1>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          name="email"
+          type="email"
+          placeholder="Kongu Mail ID"
+          required
+          ngModel
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          name="password"
+          type="password"
+          placeholder="Password"
+          required
+          ngModel
+        />
+      </mat-form-field>
+
+      <p>New User? <a routerLink="/student-signup">Sign Up</a></p>
+
+      <button mat-raised-button color="primary">Log In</button>
+
+      <mat-error *ngIf="errorMsg">{{ errorMsg }}</mat-error>
+    </form>
+  </div>
+</div>
