@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { HomeService } from './home.service';
 import { SignupComponent } from './signup/signup.component';
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private homeService: HomeService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -33,6 +35,7 @@ export class HomeComponent implements OnInit {
           summary: res.message,
         });
       }
+      return this.router.navigate([`student/${res.user[0]._id}`])
     });
   }
 

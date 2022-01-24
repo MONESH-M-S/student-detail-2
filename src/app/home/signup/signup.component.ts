@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { HomeService } from '../home.service';
 
@@ -42,7 +43,8 @@ export class SignupComponent implements OnInit {
     private dialogRef: MatDialogRef<SignupComponent>,
     private formBuilder: FormBuilder,
     private homeService: HomeService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -85,6 +87,7 @@ export class SignupComponent implements OnInit {
         });
       }
       this.dialogRef.close();
+      this.router.navigate([`student/${res.user[0]._id}`]);
       return this.messageService.add({
         severity: 'success',
         summary: res.message,
