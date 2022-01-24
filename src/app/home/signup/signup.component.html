@@ -1,5 +1,6 @@
 <p-toast class="custom-toast"></p-toast>
 <section>
+  <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
   <h2>Signup Form</h2>
   <form [formGroup]="signupForm">
     <div class="grid">
@@ -79,6 +80,7 @@
           label="Close"
           class="p-button-danger mr-2"
           (click)="onClose()"
+          *ngIf="!isLoading"
         ></button>
       </div>
     </div>

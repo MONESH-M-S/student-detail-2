@@ -39,6 +39,7 @@ export class SignupComponent implements OnInit {
     'D.Selvakarthi',
     'T.Mrunalini',
   ];
+  isLoading = false;
   constructor(
     private dialogRef: MatDialogRef<SignupComponent>,
     private formBuilder: FormBuilder,
@@ -67,6 +68,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmitSignupForm() {
+    this.isLoading = true;
     if (this.signupForm.invalid) {
       return;
     }
@@ -80,6 +82,7 @@ export class SignupComponent implements OnInit {
     formData.append('image', this.signupForm.value.image);
 
     this.homeService.userSignup(formData).subscribe((res) => {
+      this.isLoading = false;
       if (res.user === null) {
         return this.messageService.add({
           severity: 'error',

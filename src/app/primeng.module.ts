@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { ToastModule } from 'primeng/toast';
     InputMaskModule,
     FileUploadModule,
     ToastModule,
+    ProgressSpinnerModule,
   ],
   exports: [
     InputTextModule,
@@ -19,6 +21,7 @@ import { ToastModule } from 'primeng/toast';
     InputMaskModule,
     FileUploadModule,
     ToastModule,
+    ProgressSpinnerModule,
   ],
 })
 export class PrimengModule {}

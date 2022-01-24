@@ -46,9 +46,10 @@
 
       <p>New User? <a class="signup" (click)="onSignUpClicked()">Sign Up</a></p>
 
-      <button mat-raised-button color="primary">Log In</button>
-
-      <mat-error *ngIf="errorMsg">{{ errorMsg }}</mat-error>
+      <button mat-raised-button color="primary" *ngIf="!isLoading">
+        Log In
+      </button>
+      <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
     </form>
   </div>
 </div>

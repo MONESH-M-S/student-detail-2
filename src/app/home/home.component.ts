@@ -12,7 +12,7 @@ import { SignupComponent } from './signup/signup.component';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  errorMsg = '';
+  isLoading = false;
   constructor(
     private dialog: MatDialog,
     private homeService: HomeService,
@@ -23,12 +23,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
+    this.isLoading = true;
     const loginData = {
       email: form.value.email,
       password: form.value.password,
     };
 
     this.homeService.userLogin(loginData).subscribe((res) => {
+      this.isLoading = false;
       if (res.user === null) {
         return this.messageService.add({
           severity: 'error',
