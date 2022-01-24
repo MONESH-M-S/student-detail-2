@@ -1,0 +1,85 @@
+<section>
+  <h2>Signup Form</h2>
+  <form [formGroup]="signupForm">
+    <div class="grid">
+      <div class="p-inputgroup col-12 mb-2">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input
+          type="text"
+          pInputText
+          formControlName="username"
+          placeholder="Username"
+        />
+      </div>
+      <div class="p-inputgroup col-12 mb-2">
+        <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+        <input
+          type="email"
+          pInputText
+          formControlName="email"
+          placeholder="Kongu Email"
+        />
+      </div>
+      <div class="p-inputgroup col-12 mb-2">
+        <span class="p-inputgroup-addon"><i class="pi pi-eye"></i></span>
+        <input
+          type="password"
+          pInputText
+          formControlName="password"
+          placeholder="Create a Password"
+        />
+      </div>
+      <div class="p-inputgroup col-12 mb-2">
+        <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+        <input
+          type="text"
+          pInputText
+          formControlName="rollno"
+          placeholder="Roll No."
+        />
+      </div>
+      <div class="col-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Choose Mentor</mat-label>
+          <mat-select formControlName="mentor" required>
+            <mat-option *ngFor="let mentor of mentors" [value]="mentor">
+              {{ mentor }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <p-fileUpload
+          mode="basic"
+          name="demo"
+          accept="image/*"
+          maxFileSize="1500000"
+          customUpload="true"
+          (uploadHandler)="onUpload($event)"
+          chooseLabel="Upload Profile Picture"
+          [auto]="true"
+        >
+        </p-fileUpload>
+      </div>
+      <div class="col-12">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Submit"
+          class="p-button-success mr-2"
+          (click)="onSubmitSignupForm()"
+          [disabled]="signupForm.invalid"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Close"
+          class="p-button-danger mr-2"
+          (click)="onClose()"
+        ></button>
+      </div>
+    </div>
+  </form>
+</section>

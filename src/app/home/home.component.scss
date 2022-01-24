@@ -13,6 +13,7 @@
 
     h1 {
       font-size: 42px;
+      font-weight: 500;
     }
 
     p {
@@ -21,7 +22,7 @@
     }
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 440px) {
     justify-content: space-between;
     margin: auto 14px;
 
@@ -113,14 +114,19 @@
     font-size: 15px;
 
     a {
-      text-transform: uppercase;
       text-decoration: underline;
+      cursor: pointer;
+      color: blue;
+
+      &:active {
+        color: red;
+      }
     }
   }
 }
 
-@media (max-width: 420px) {
-    .admin {
-        display: none;
-    }
+@media (max-width: 500px) {
+  .admin {
+    display: none;
+  }
 }
