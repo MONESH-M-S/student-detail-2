@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MessageService } from 'primeng/api';
+import { HomeService } from '../home.service';
 
 @Component({
   selector: 'app-signup',
@@ -38,7 +40,9 @@ export class SignupComponent implements OnInit {
   ];
   constructor(
     private dialogRef: MatDialogRef<SignupComponent>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private homeService: HomeService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +68,28 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.invalid) {
       return;
     }
-    console.log(this.signupForm.value);
+
+    const formData = new FormData();
+    formData.append('username', this.signupForm.value.username);
+    formData.append('password', this.signupForm.value.password);
+    formData.append('email', this.signupForm.value.email);
+    formData.append('rollno', this.signupForm.value.rollno);
+    formData.append('mentor', this.signupForm.value.mentor);
+    formData.append('image', this.signupForm.value.image);
+
+    this.homeService.userSignup(formData).subscribe((res) => {
+      if (res.user === null) {
+        return this.messageService.add({
+          severity: 'error',
+          summary: res.message,
+        });
+      }
+      this.dialogRef.close();
+      return this.messageService.add({
+        severity: 'success',
+        summary: res.message,
+      });
+    });
   }
 
   private _initForm() {

@@ -10,6 +10,7 @@ import { PrimengModule } from './primeng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './home/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
