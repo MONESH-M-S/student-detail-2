@@ -3,5 +3,28 @@ section {
     width: 95%;
     margin: auto;
     height: 95vh;
+
+    mat-card-title {
+      margin-top: 4%;
+      .img {
+        img {
+          width: 90px;
+          border-radius: 10%;
+        }
+      }
+      .other-detail {
+        h2 {
+          margin: 0;
+        }
+        h4 {
+          margin: 0;
+        }
+      }
+      .button {
+        mat-icon {
+          margin-top: -3px;
+        }
+      }
+    }
   }
 }

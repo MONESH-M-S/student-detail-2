@@ -11,6 +11,7 @@ import { StudentService } from './student.service';
 export class StudentComponent implements OnInit {
   id: string;
   userData: User;
+  userActivity: any;
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService
@@ -23,8 +24,7 @@ export class StudentComponent implements OnInit {
         this.studentService
           .getStudentDataById(params['id'])
           .subscribe((res) => {
-            this.userData=res.user
-            console.log(this.userData);
+            this.userData = res.user;
           });
       }
     });

@@ -1,3 +1,83 @@
 <section>
-    <mat-card></mat-card>
+  <mat-card>
+    <mat-card-title>
+      <div class="flex flex-column md:flex-row justify-content-evenly">
+        <div class="detail flex">
+          <div class="img ml-0 md:ml-5">
+            <img [src]="userData?.image" alt="Profile Image" />
+          </div>
+          <div class="other-detail mt-5 ml-1 md:ml-5">
+            <h2 class="font-medium md:text-lg text-xl md:text-2xl">
+              {{ userData?.username | titlecase }}
+            </h2>
+            <h4 class="font-medium md:text-lg">{{ userData?.rollno }}</h4>
+            <h4 class="font-medium md:text-lg">( {{ userData?.email }} )</h4>
+          </div>
+        </div>
+        <div class="button mt-5 ml-0">
+          <button
+            mat-raised-button
+            color="primary"
+            pTooltip="Edit my detail"
+            tooltipPosition="bottom"
+            class="mr-3"
+          >
+            <mat-icon>cached</mat-icon> Edit Detail
+          </button>
+          <button
+            mat-raised-button
+            pTooltip="Upload new data"
+            tooltipPosition="bottom"
+            color="accent"
+          >
+            <mat-icon>cloud_upload</mat-icon> Upload New
+          </button>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="card hidden md:block mt-5">
+        <h2 class="ml-2 mt-4">Acitivities Added by You,</h2>
+        <p-table
+          [value]="userActivity"
+          [scrollable]="true"
+          scrollHeight="300px"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="code">
+                Code <p-sortIcon field="code"></p-sortIcon>
+              </th>
+              <th pSortableColumn="name">
+                Name <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="category">
+                Category <p-sortIcon field="category"></p-sortIcon>
+              </th>
+              <th pSortableColumn="quantity">
+                Quantity <p-sortIcon field="quantity"></p-sortIcon>
+              </th>
+              <th pSortableColumn="price">
+                Price <p-sortIcon field="price"></p-sortIcon>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-activity>
+            <tr>
+              <td>{{ activity.code }}</td>
+              <td>{{ activity.name }}</td>
+              <td>{{ activity.category }}</td>
+              <td>{{ activity.quantity }}</td>
+              <td>{{ activity.price }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="mt-5">
+        <h1 class="block md:hidden mt-5 text-center font-semibold">
+          Use Larger Screen to View Your History!
+        </h1>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </section>
