@@ -1,0 +1,70 @@
+<section>
+  <h1 mat-dialog-title class="font-semibold text-center">Admin-Add Form</h1>
+  <form [formGroup]="addAdminForm">
+    <div class="grid">
+      <div class="col-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Admin name</mat-label>
+          <mat-select formControlName="name">
+            <mat-option *ngFor="let mentor of mentors" [value]="mentor">
+              {{ mentor }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="p-inputgroup first-input col-12 mb-2">
+        <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+        <input
+          type="email"
+          pInputText
+          formControlName="email"
+          placeholder="Admin Email"
+        />
+      </div>
+      <div class="p-inputgroup col-12 mb-2">
+        <span class="p-inputgroup-addon"><i class="pi pi-eye"></i></span>
+        <input
+          type="password"
+          pInputText
+          formControlName="password"
+          placeholder="Admin Password"
+        />
+      </div>
+      <div class="p-inputgroup col-12 mb-2">
+        <span class="p-inputgroup-addon"><i class="pi pi-box"></i></span>
+        <input
+          type="email"
+          pInputText
+          formControlName="department"
+          placeholder="Admin Department"
+        />
+      </div>
+      <div class="col-12">
+        <h2>Is-Admin</h2>
+        <p-inputSwitch formControlName="isAdmin"></p-inputSwitch>
+      </div>
+    </div>
+    <div class="col-12">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Submit"
+        class="p-button-raised p-button-success p-button-text mr-4"
+        [disabled]="addAdminForm.invalid"
+        *ngIf="!isLoading"
+        (click)="onSubmit()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Close"
+        class="p-button-raised p-button-danger p-button-text mr-4"
+        (click)="onClose()"
+        *ngIf="!isLoading"
+      ></button>
+      <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+    </div>
+  </form>
+</section>

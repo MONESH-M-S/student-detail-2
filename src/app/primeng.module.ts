@@ -6,7 +6,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TableModule } from 'primeng/table';
-import {TooltipModule} from 'primeng/tooltip';
+import { TooltipModule } from 'primeng/tooltip';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import {TooltipModule} from 'primeng/tooltip';
     ToastModule,
     ProgressSpinnerModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    InputSwitchModule,
   ],
   exports: [
     InputTextModule,
@@ -27,7 +29,8 @@ import {TooltipModule} from 'primeng/tooltip';
     ToastModule,
     ProgressSpinnerModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    InputSwitchModule,
   ],
 })
 export class PrimengModule {}

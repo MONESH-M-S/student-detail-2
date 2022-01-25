@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
     'Dr.U.S.Ragupathy',
     'Dr.R.Subasri',
     'Dr.T.Kalavathidevi',
-    'r.K.Prabhu',
+    'Dr.K.Prabhu',
     'Dr.S.J.Suji Prasad',
     'Dr.M.Madhan Mohan',
     'Dr.K.N.Baluprithviraj',

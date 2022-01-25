@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { StudentComponent } from './student/student.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { AddAdminComponent } from './admin/admin-home/add-admin/add-admin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AdminComponent } from './admin/admin.component';
     HomeComponent,
     SignupComponent,
     StudentComponent,
-    AdminComponent
+    AdminComponent,
+    AdminHomeComponent,
+    AddAdminComponent
   ],
   imports: [
     BrowserModule,
