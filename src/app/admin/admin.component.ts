@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AdminService } from './admin.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { AdminService } from './admin.service';
 })
 export class AdminComponent implements OnInit {
   isLoading = false;
-  constructor(private adminService: AdminService, private router: Router) {}
+  constructor(
+    private adminService: AdminService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,8 +27,14 @@ export class AdminComponent implements OnInit {
     };
     this.adminService.adminLogin(loginForm).subscribe((res) => {
       this.isLoading = false;
-      console.log(res);
-      this.router.navigate(['admin/4']);
+      if (res.admin === null) {
+        this.messageService.add({
+          severity: 'error',
+          summary: res.message,
+        });
+      } else {
+        this.router.navigate([`admin/${res.admin[0]?.name}`]);
+      }
     });
   }
 }
