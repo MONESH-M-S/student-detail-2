@@ -12,13 +12,15 @@ import { SignupComponent } from './home/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { StudentComponent } from './student/student.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SignupComponent,
-    StudentComponent
+    StudentComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

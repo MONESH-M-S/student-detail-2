@@ -1,0 +1,50 @@
+<p-toast></p-toast>
+<mat-card>
+  <mat-card-title>
+    <div class="img">
+      <img
+        src="assets/streamline-icon-avatar-neutral-lock-2@400x400.png"
+        alt=""
+      />
+    </div>
+    <h2 class="text-center font-semibold uppercase">Admin Section</h2>
+  </mat-card-title>
+  <mat-card-content>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div class="p-inputgroup input">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input
+          type="email"
+          pInputText
+          name="email"
+          ngModel
+          placeholder="Admin Email"
+          required
+        />
+      </div>
+      <div class="p-inputgroup input">
+        <span class="p-inputgroup-addon"><i class="pi pi-eye"></i></span>
+        <input
+          type="password"
+          pInputText
+          name="password"
+          ngModel
+          placeholder="Password"
+          required
+          minlength="6"
+        />
+      </div>
+      <div class="button">
+        <button
+          mat-raised-button
+          [disabled]="form.invalid"
+          *ngIf="!isLoading"
+          color="primary"
+        >
+          Submit
+        </button>
+        <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

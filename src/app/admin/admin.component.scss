@@ -1,0 +1,50 @@
+mat-card {
+  width: 90%;
+  margin: auto;
+  margin-top: 10%;
+  height: 70vh;
+
+  @media (max-width: 800px) {
+    margin-top: 20%;
+  }
+
+  @media (max-width: 500px) {
+    margin-top: 40%;
+  }
+
+  mat-card-title {
+    .img {
+      text-align: center;
+      margin-top: -100px;
+      img {
+        width: 240px;
+
+        @media (max-width: 700px) {
+          width: 180px;
+        }
+      }
+    }
+  }
+
+  mat-card-content {
+    width: 35%;
+    margin: auto;
+
+    .input {
+      margin: 25px auto;
+    }
+
+    button {
+      width: 100%;
+    }
+
+    p-progressSpinner {
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 700px) {
+      width: 80%;
+    }
+  }
+}
