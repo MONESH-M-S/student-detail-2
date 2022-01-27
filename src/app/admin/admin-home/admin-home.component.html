@@ -19,4 +19,22 @@
       </div>
     </div>
   </div>
+  <h1 *ngIf="isSutdentDetailAvailable" class="font-semibold text-center">
+    No Students Registered Till Now!
+  </h1>
+  <div class="container">
+    <mat-card
+      class="example-card"
+      *ngFor="let detail of studentDetail; index as i"
+      (click)="onCardClick(detail._id)"
+    >
+      <mat-card-title *ngIf="errMsg">{{ errMsg }}</mat-card-title>
+      <mat-card-title>{{ detail.rollno }}</mat-card-title>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+        <h3>{{ detail.username }}</h3>
+      </mat-card-actions>
+      <mat-card-footer> </mat-card-footer>
+    </mat-card>
+  </div>
 </section>

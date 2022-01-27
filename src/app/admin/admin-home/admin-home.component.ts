@@ -13,6 +13,8 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
 })
 export class AdminHomeComponent implements OnInit {
   adminDetail: Admin;
+  studentDetail: any;
+  isSutdentDetailAvailable = false;
   isAdmin = false;
   isLoading = false;
 
@@ -35,11 +37,16 @@ export class AdminHomeComponent implements OnInit {
         this.adminService
           .getStudentDetailByAdminName(params['name'])
           .subscribe((res) => {
-            console.log(res);
+            if (res.users === null) {
+              this.isSutdentDetailAvailable = true;
+            }
+            this.studentDetail = res.users;
           });
       }
     });
   }
+
+  onCardClick(id: string) {}
 
   addNewAdmin() {
     let dialogRef = this.dialog.open(AddAdminComponent, {
