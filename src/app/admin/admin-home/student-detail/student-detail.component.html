@@ -1,1 +1,48 @@
-<p>student-detail works!</p>
+<div class="sizing" *ngIf="!isLoading">
+  <div class="container">
+    <mat-card class="main-card pt-5">
+      <div class="main-card-img mt-5">
+        <img src="{{ studentDetail?.image }}" alt="Profile picture" />
+      </div>
+      <mat-divider inset></mat-divider>
+      <div class="title">
+        <mat-card-title>{{ studentDetail?.username }}</mat-card-title>
+        <mat-card-title>{{ studentDetail?.rollno }}</mat-card-title>
+        <mat-card-subtitle
+          >Mentor: <span>{{ studentDetail?.mentor }}</span>
+        </mat-card-subtitle>
+      </div>
+      <mat-card-actions>
+        <div class="content">
+          <p>Paper Presented - {{ paperCount }}</p>
+          <p>Project Presented - {{ projectCount }}</p>
+          <p>Total Point - {{ total }}</p>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+    <div class="expansion">
+      <mat-card class="expansion-card">
+        <div class="button flex justify-content-between">
+          <button
+            (click)="goBack()"
+            mat-stroked-button
+            color="accent"
+          >
+            <mat-icon>keyboard_arrow_left</mat-icon>
+            Back
+          </button>
+          <button
+            (click)="onRouteMarkSplitup()"
+            mat-raised-button
+            color="primary"
+          >
+            Mark Splitup
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+        <app-detailed-table></app-detailed-table>
+      </mat-card>
+    </div>
+  </div>
+</div>

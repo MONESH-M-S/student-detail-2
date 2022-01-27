@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { User } from '../home/user.model';
 import { Admin } from './admin.model';
 
 @Injectable({
@@ -31,8 +32,14 @@ export class AdminService {
   }
 
   getStudentDetailByAdminName(adminName: string) {
-    return this.http.get<{ users: any; message: string }>(
+    return this.http.get<{ users: User[]; message: string }>(
       `${this.BACKEND_URL}user/${adminName}/admin-name`
+    );
+  }
+
+  getStudentDetailById(id: string) {
+    return this.http.get<{ user: User; message: string }>(
+      `${this.BACKEND_URL}user/${id}`
     );
   }
 }
