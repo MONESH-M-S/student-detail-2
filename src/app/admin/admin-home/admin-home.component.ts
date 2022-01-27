@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Admin } from '../admin.model';
 import { AdminService } from '../admin.service';
@@ -22,7 +22,8 @@ export class AdminHomeComponent implements OnInit {
     private adminService: AdminService,
     private dialog: MatDialog,
     private messageService: MessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -46,7 +47,9 @@ export class AdminHomeComponent implements OnInit {
     });
   }
 
-  onCardClick(id: string) {}
+  onCardClick(id: string) {
+    this.router.navigate([`admin/s/${id}`]);
+  }
 
   addNewAdmin() {
     let dialogRef = this.dialog.open(AddAdminComponent, {

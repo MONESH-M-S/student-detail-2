@@ -15,6 +15,7 @@ import { StudentComponent } from './student/student.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AddAdminComponent } from './admin/admin-home/add-admin/add-admin.component';
+import { StudentDetailComponent } from './admin/admin-home/student-detail/student-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddAdminComponent } from './admin/admin-home/add-admin/add-admin.compon
     StudentComponent,
     AdminComponent,
     AdminHomeComponent,
-    AddAdminComponent
+    AddAdminComponent,
+    StudentDetailComponent
   ],
   imports: [
     BrowserModule,
