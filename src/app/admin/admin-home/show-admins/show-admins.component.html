@@ -1,5 +1,78 @@
+<p-toast></p-toast>
 <section>
-    <mat-card class="w-11 m-auto">
-
-    </mat-card>
+  <mat-card class="w-11 m-auto">
+    <div class="back-button">
+      <button (click)="goBack()" mat-button color="warn">
+        <mat-icon>keyboard_arrow_left</mat-icon>Back
+      </button>
+    </div>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div class="card-details" *ngIf="!isLoading">
+      <mat-card-header>
+        <h2>Showing List of Available Admins!</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="add-new-btn">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="addAdmin()"
+            class="btn"
+          >
+            <mat-icon>add</mat-icon>Add Mentor
+          </button>
+        </div>
+        <div class="table mt-5">
+          <p-table
+            [value]="admins"
+            responsiveLayout="scroll"
+            [scrollable]="true"
+            scrollHeight="480px"
+          >
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th pSortableColumn="name">
+                  Name <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th>Admin</th>
+                <th></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-admin>
+              <tr *ngIf="admin._id !== id">
+                <td>
+                  <p class="mentor-name">{{ admin?.name }}</p>
+                </td>
+                <td>
+                  <p-tag
+                    *ngIf="admin?.isAdmin"
+                    icon="pi pi-check"
+                    severity="success"
+                    [rounded]="true"
+                  ></p-tag>
+                  <p-tag
+                    *ngIf="!admin?.isAdmin"
+                    icon="pi pi-times"
+                    severity="danger"
+                    [rounded]="true"
+                  ></p-tag>
+                </td>
+                <td>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-trash"
+                    class="p-button-rounded p-button-danger p-button-outlined"
+                    pTooltip="Delete"
+                    (click)="deleteAdmin(mentor._id)"
+                  ></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
 </section>

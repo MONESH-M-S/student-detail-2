@@ -1,5 +1,42 @@
 section {
   mat-card {
     height: 95vh;
+
+    mat-card-header {
+      justify-content: center;
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+
+    mat-card-content {
+      width: 70%;
+      margin: auto;
+      .add-new-btn {
+        text-align: right;
+        .btn {
+          mat-icon {
+            margin-top: -4px;
+          }
+        }
+      }
+      .table {
+        .mentor-name {
+          text-transform: capitalize;
+        }
+
+        td {
+          button {
+            margin-right: 18px;
+          }
+        }
+      }
+    }
+  }
+  .back-button {
+    mat-icon {
+      margin-top: -3px;
+    }
   }
 }

@@ -42,4 +42,10 @@ export class AdminService {
       `${this.BACKEND_URL}user/${id}`
     );
   }
+
+  getAllAdmins() {
+    return this.http.get<{ admins: Admin[]; message: string }>(
+      `${this.BACKEND_URL}admin/`
+    );
+  }
 }

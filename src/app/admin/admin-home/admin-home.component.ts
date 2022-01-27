@@ -13,6 +13,7 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
 })
 export class AdminHomeComponent implements OnInit {
   adminDetail: Admin;
+  id: string;
   studentDetail: any;
   isSutdentDetailAvailable = false;
   isAdmin = false;
@@ -34,6 +35,7 @@ export class AdminHomeComponent implements OnInit {
           .getAdminDetailByAdminName(params['name'])
           .subscribe((res) => {
             this.isAdmin = res.admin?.isAdmin;
+            this.id = res.admin?._id;
           });
         this.adminService
           .getStudentDetailByAdminName(params['name'])
@@ -49,6 +51,10 @@ export class AdminHomeComponent implements OnInit {
 
   onCardClick(id: string) {
     this.router.navigate([`admin/s/${id}`]);
+  }
+
+  showAdmins() {
+    this.router.navigate([`admin/show-admins/${this.id}`]);
   }
 
   addNewAdmin() {
