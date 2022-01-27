@@ -23,4 +23,16 @@ export class AdminService {
       form
     );
   }
+
+  getAdminDetailByAdminName(adminName: string) {
+    return this.http.get<{ admin: Admin; message: string }>(
+      `${this.BACKEND_URL}admin/${adminName}`
+    );
+  }
+
+  getStudentDetailByAdminName(adminName: string) {
+    return this.http.get<{ users: any; message: string }>(
+      `${this.BACKEND_URL}user/${adminName}/admin-name`
+    );
+  }
 }
