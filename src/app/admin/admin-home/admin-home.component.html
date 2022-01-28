@@ -1,5 +1,6 @@
 <p-toast></p-toast>
-<section>
+<p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+<section *ngIf="!isLoading">
   <div class="buttons mt-5" *ngIf="isAdmin">
     <div class="flex justify-content-end mr-5">
       <div class="button mr-3">

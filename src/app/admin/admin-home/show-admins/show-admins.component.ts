@@ -28,12 +28,14 @@ export class ShowAdminsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
+      this.isLoading = true;
       if (params) {
         this.id = params['id'];
       }
     });
     this.adminService.getAllAdmins().subscribe((res) => {
       this.admins = res.admins;
+      this.isLoading = false;
     });
   }
 

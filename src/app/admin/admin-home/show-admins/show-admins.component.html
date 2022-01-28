@@ -22,7 +22,9 @@
             <mat-icon>add</mat-icon>Add Mentor
           </button>
         </div>
-        <div class="table mt-5">
+        <p-progressSpinner class="mt-5" *ngIf="isLoading"></p-progressSpinner>
+
+        <div class="table mt-5" *ngIf="!isLoading">
           <p-table
             [value]="admins"
             responsiveLayout="scroll"

@@ -28,8 +28,8 @@ export class AdminHomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoading = true;
     this.route.params.subscribe((params) => {
+      this.isLoading = true;
       if (params) {
         this.adminService
           .getAdminDetailByAdminName(params['name'])
@@ -46,6 +46,7 @@ export class AdminHomeComponent implements OnInit {
             this.studentDetail = res.users;
           });
       }
+      this.isLoading = false;
     });
   }
 
