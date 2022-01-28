@@ -1,0 +1,27 @@
+<section>
+  <h2>Please Enter your Previous Password to Update</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      name="password"
+      type="password"
+      placeholder="Password"
+      required
+      minLength="6"
+      [(ngModel)]="data.password"
+    />
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-flat-button
+      [mat-dialog-close]="data.password"
+      color="primary"
+      cdkFocusInitial
+      [disabled]="!data.password"
+    >
+      Ok
+    </button>
+  </div>
+</section>
