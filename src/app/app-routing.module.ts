@@ -5,20 +5,24 @@ import { ShowAdminsComponent } from './admin/admin-home/show-admins/show-admins.
 import { StudentDetailComponent } from './admin/admin-home/student-detail/student-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
+import { EditDetailComponent } from './student/edit-detail/edit-detail.component';
 import { StudentComponent } from './student/student.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: 'student',
-    children: [{ path: ':id', component: StudentComponent }],
+    path: 's',
+    children: [
+      { path: ':id', component: StudentComponent },
+      { path: ':id/edit', component: EditDetailComponent },
+    ],
   },
   {
     path: 'admin',
     children: [
       { path: '', component: AdminComponent },
       { path: ':name', component: AdminHomeComponent },
-      {path:'show-admins/:id', component: ShowAdminsComponent},
+      { path: 'show-admins/:id', component: ShowAdminsComponent },
       { path: 's/:id', component: StudentDetailComponent },
     ],
   },

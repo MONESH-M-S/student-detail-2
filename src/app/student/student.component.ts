@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../home/user.model';
 import { StudentService } from './student.service';
 
@@ -14,7 +14,8 @@ export class StudentComponent implements OnInit {
   userActivity: any;
   constructor(
     private route: ActivatedRoute,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -24,9 +25,15 @@ export class StudentComponent implements OnInit {
         this.studentService
           .getStudentDataById(params['id'])
           .subscribe((res) => {
-            this.userData = res.user;
+            if (res.user !== []) {
+              this.userData = res?.user[0];
+            }
           });
       }
     });
+  }
+
+  openEditDialog() {
+    this.router.navigate([`s/${this.id}/edit`]);
   }
 }

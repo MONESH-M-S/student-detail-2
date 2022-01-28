@@ -10,9 +10,23 @@ export class StudentService {
   BACKEND_URL = environment.backend_url;
   constructor(private http: HttpClient) {}
 
+  studentDetailUpdatePasswordCheck(data: { email: string; password: string }) {
+    return this.http.post<{ user: User; message: string }>(
+      `${this.BACKEND_URL}user/login`,
+      data
+    );
+  }
+
   getStudentDataById(id: string) {
     return this.http.get<{ user: User; message: string }>(
       `${this.BACKEND_URL}user/${id}`
+    );
+  }
+
+  updateStudentData(id: string, form: FormData) {
+    return this.http.put<{ user: User; message: string }>(
+      `${this.BACKEND_URL}/user/${id}`,
+      form
     );
   }
 }

@@ -18,6 +18,8 @@ import { AddAdminComponent } from './admin/admin-home/add-admin/add-admin.compon
 import { StudentDetailComponent } from './admin/admin-home/student-detail/student-detail.component';
 import { ShowAdminsComponent } from './admin/admin-home/show-admins/show-admins.component';
 import { DeleteDialogComponent } from './admin/admin-home/show-admins/delete-dialog/delete-dialog.component';
+import { EditDetailComponent } from './student/edit-detail/edit-detail.component';
+import { ConfirmationDialogComponent } from './student/edit-detail/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { DeleteDialogComponent } from './admin/admin-home/show-admins/delete-dia
     AddAdminComponent,
     StudentDetailComponent,
     ShowAdminsComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    EditDetailComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
