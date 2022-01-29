@@ -21,6 +21,16 @@ import { DeleteDialogComponent } from './admin/admin-home/show-admins/delete-dia
 import { EditDetailComponent } from './student/edit-detail/edit-detail.component';
 import { ConfirmationDialogComponent } from './student/edit-detail/confirmation-dialog/confirmation-dialog.component';
 import { ActivityComponent } from './student/activity/activity.component';
+import { PaperComponent } from './student/activity/paper/paper.component';
+import { ProjectComponent } from './student/activity/project/project.component';
+import { ClubComponent } from './student/activity/club/club.component';
+import { VacComponent } from './student/activity/vac/vac.component';
+import { GateComponent } from './student/activity/gate/gate.component';
+import { SportsComponent } from './student/activity/sports/sports.component';
+import { InternComponent } from './student/activity/intern/intern.component';
+import { PlacementComponent } from './student/activity/placement/placement.component';
+import { NccComponent } from './student/activity/ncc/ncc.component';
+import { OtherComponent } from './student/activity/other/other.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +46,17 @@ import { ActivityComponent } from './student/activity/activity.component';
     DeleteDialogComponent,
     EditDetailComponent,
     ConfirmationDialogComponent,
-    ActivityComponent
+    ActivityComponent,
+    PaperComponent,
+    ProjectComponent,
+    ClubComponent,
+    VacComponent,
+    GateComponent,
+    SportsComponent,
+    InternComponent,
+    PlacementComponent,
+    NccComponent,
+    OtherComponent
   ],
   imports: [
     BrowserModule,

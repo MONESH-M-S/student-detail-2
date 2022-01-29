@@ -26,14 +26,14 @@ export class ActivityComponent implements OnInit {
   private _initActivities() {
     this.activites = [
       {
-        label: 'Paper',
+        label: 'Paper Presented',
         icon: 'pi pi-fw pi-file',
         command: () => {
           console.log('paper');
         },
       },
       {
-        label: 'Project',
+        label: 'Project Presented',
         icon: 'pi pi-fw pi-th-large',
         command: () => {
           console.log('project');
@@ -89,14 +89,7 @@ export class ActivityComponent implements OnInit {
         },
       },
       {
-        label: 'Social Activities',
-        icon: 'pi pi-fw pi-users',
-        command: () => {
-          console.log('project');
-        },
-      },
-      {
-        label: 'Other Activities',
+        label: 'Social/Other Activities',
         icon: 'pi pi-fw pi-box',
         command: () => {
           console.log('project');
