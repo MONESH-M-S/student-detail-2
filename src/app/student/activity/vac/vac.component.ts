@@ -3,14 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-vac',
   templateUrl: './vac.component.html',
-  styles: [
-  ]
+  styleUrls: ['./vac.component.scss'],
 })
 export class VacComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

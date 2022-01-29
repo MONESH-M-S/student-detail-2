@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-placement',
   templateUrl: './placement.component.html',
-  styles: [
-  ]
+  styleUrls: ['./placement.component.scss']
 })
 export class PlacementComponent implements OnInit {
 

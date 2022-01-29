@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-sports',
   templateUrl: './sports.component.html',
-  styles: [
-  ]
+  styleUrls: ['./sports.component.scss']
 })
 export class SportsComponent implements OnInit {
 

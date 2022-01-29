@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-paper',
   templateUrl: './paper.component.html',
-  styles: [
-  ]
+  styleUrls: ['./paper.component.scss']
 })
 export class PaperComponent implements OnInit {
 
