@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../home/user.model';
+import { ActivityComponent } from './activity/activity.component';
 import { StudentService } from './student.service';
 
 @Component({
@@ -15,7 +17,8 @@ export class StudentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +36,17 @@ export class StudentComponent implements OnInit {
     });
   }
 
-  openEditDialog() {
+  openEdit() {
     this.router.navigate([`s/${this.id}/edit`]);
+  }
+
+  openUploadNewDialog() {
+    this.dialog.open(ActivityComponent, {
+      data: {
+        id: this.id,
+      },
+      disableClose: true,
+      hasBackdrop: true,
+    });
   }
 }

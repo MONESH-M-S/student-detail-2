@@ -21,7 +21,7 @@
             pTooltip="Edit my detail"
             tooltipPosition="bottom"
             class="mr-3"
-            (click)="openEditDialog()"
+            (click)="openEdit()"
           >
             <mat-icon>cached</mat-icon> Edit Detail
           </button>
@@ -30,6 +30,7 @@
             pTooltip="Upload new data"
             tooltipPosition="bottom"
             color="accent"
+            (click)="openUploadNewDialog()"
           >
             <mat-icon>cloud_upload</mat-icon> Upload New
           </button>

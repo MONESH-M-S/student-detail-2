@@ -1,0 +1,11 @@
+<section>
+  <div class="close-icon mb-1" mat-dialog-actions>
+    <button mat-icon-button color="warn" (click)="onClose()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+  <h2 mat-dialog-title>Select the Type for Uploading...</h2>
+  <div>
+    <p-megaMenu [model]="activites" orientation="vertical"></p-megaMenu>
+  </div>
+</section>

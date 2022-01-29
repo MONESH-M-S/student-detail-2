@@ -20,6 +20,7 @@ import { ShowAdminsComponent } from './admin/admin-home/show-admins/show-admins.
 import { DeleteDialogComponent } from './admin/admin-home/show-admins/delete-dialog/delete-dialog.component';
 import { EditDetailComponent } from './student/edit-detail/edit-detail.component';
 import { ConfirmationDialogComponent } from './student/edit-detail/confirmation-dialog/confirmation-dialog.component';
+import { ActivityComponent } from './student/activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ConfirmationDialogComponent } from './student/edit-detail/confirmation-
     ShowAdminsComponent,
     DeleteDialogComponent,
     EditDetailComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,

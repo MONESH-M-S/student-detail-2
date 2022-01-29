@@ -5,6 +5,7 @@ import { ShowAdminsComponent } from './admin/admin-home/show-admins/show-admins.
 import { StudentDetailComponent } from './admin/admin-home/student-detail/student-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
+import { ActivityComponent } from './student/activity/activity.component';
 import { EditDetailComponent } from './student/edit-detail/edit-detail.component';
 import { StudentComponent } from './student/student.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
     children: [
       { path: ':id', component: StudentComponent },
       { path: ':id/edit', component: EditDetailComponent },
+      { path: ':id/upload', component: ActivityComponent },
     ],
   },
   {
