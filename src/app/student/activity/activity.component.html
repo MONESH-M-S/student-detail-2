@@ -6,6 +6,37 @@
   </div>
   <h2 mat-dialog-title>Select the Type for Uploading...</h2>
   <div>
-    <p-megaMenu [model]="activites" orientation="vertical"></p-megaMenu>
+    <div class="grid mt-0 md:mt-2">
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('paper')">Paper Presented</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('project')">Project Presented</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('club')">Club</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('vac')">Value Added Course</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('gate')">Gate exam</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('sports')">Sports</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('intern')">Internship</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('placement')">Placement</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('ncc')">NCC</a>
+      </div>
+      <div class="col-12 md:col-6">
+        <a (click)="onClickedActivity('other')">Social/Other Activity</a>
+      </div>
+    </div>
   </div>
 </section>

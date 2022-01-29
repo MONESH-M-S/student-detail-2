@@ -1,6 +1,21 @@
 section {
+  max-width: 500px;
   .close-icon {
     justify-content: flex-end;
+  }
+  h2 {
+    color: red;
+  }
+  a {
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      color: blue;
+      text-decoration: underline;
+    }
   }
 }
 
