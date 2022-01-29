@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { StudentService } from '../student.service';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
@@ -50,7 +50,8 @@ export class EditDetailComponent implements OnInit {
     private studentService: StudentService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -93,7 +94,7 @@ export class EditDetailComponent implements OnInit {
         this.isLoading = true;
         const form = {
           email: this.signupForm.value.email,
-          password: this.signupForm.value.password,
+          password: result,
         };
         this.studentService
           .studentDetailUpdatePasswordCheck(form)
@@ -113,10 +114,24 @@ export class EditDetailComponent implements OnInit {
               formData.append('mentor', this.signupForm.value.mentor);
               formData.append('image', this.signupForm.value.image);
 
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Updated Successfully!',
-              });
+              this.studentService
+                .updateStudentData(this.id, formData)
+                .subscribe((res) => {
+                  if (res.user !== null) {
+                    this.messageService.add({
+                      severity: 'success',
+                      summary: 'Updated Successfully!',
+                    });
+                    window.setTimeout(() => {
+                      this.router.navigate([`s/${this.id}`]);
+                    }, 2500);
+                  } else {
+                    return this.messageService.add({
+                      severity: 'error',
+                      summary: res.message,
+                    });
+                  }
+                });
 
               this.isLoading = false;
             }
@@ -139,10 +154,10 @@ export class EditDetailComponent implements OnInit {
   private _setFormValue() {
     this.signupForm
       .get('username')
-      .setValue(this.userAlreadyEnteredData?.username);
-    this.signupForm.get('email').setValue(this.userAlreadyEnteredData?.email);
-    this.signupForm.get('rollno').setValue(this.userAlreadyEnteredData?.rollno);
-    this.signupForm.get('mentor').setValue(this.userAlreadyEnteredData?.mentor);
-    this.imageDisplay = this.userAlreadyEnteredData?.image;
+      .setValue(this.userAlreadyEnteredData.username);
+    this.signupForm.get('email').setValue(this.userAlreadyEnteredData.email);
+    this.signupForm.get('rollno').setValue(this.userAlreadyEnteredData.rollno);
+    this.signupForm.get('mentor').setValue(this.userAlreadyEnteredData.mentor);
+    this.imageDisplay = this.userAlreadyEnteredData.image;
   }
 }

@@ -25,7 +25,7 @@ export class StudentService {
 
   updateStudentData(id: string, form: FormData) {
     return this.http.put<{ user: User; message: string }>(
-      `${this.BACKEND_URL}/user/${id}`,
+      `${this.BACKEND_URL}user/${id}`,
       form
     );
   }
