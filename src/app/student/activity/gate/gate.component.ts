@@ -69,13 +69,13 @@ export class GateComponent implements OnInit {
     const f = this.activityForm.value;
 
     const form = {
-      'name': f.name,
-      'year': +f.year,
-      'mark': +f.mark,
-      'image': f.image,
-      'type': 'gate',
-      'uploadedDate': this.date
-    }
+      name: f.name,
+      year: +f.year,
+      mark: +f.mark,
+      image: f.image,
+      type: 'gate',
+      uploadedDate: this.date,
+    };
 
     this.studentService
       .uploadStudentActivity(this.id, form)
