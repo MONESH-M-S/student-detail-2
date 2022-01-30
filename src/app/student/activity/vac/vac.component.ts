@@ -75,7 +75,7 @@ export class VacComponent implements OnInit {
       endDate: f.endDate,
       mark: +f.mark,
       image: f.image,
-      type: 'placement',
+      type: 'vac',
       uploadedDate: this.date,
     };
 

@@ -76,7 +76,7 @@ export class SportsComponent implements OnInit {
       endDate: f.endDate,
       mark: +f.mark,
       image: f.image,
-      type: 'placement',
+      type: 'sports',
       uploadedDate: this.date,
     };
 
