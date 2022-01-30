@@ -71,7 +71,7 @@ export class PlacementComponent implements OnInit {
       name: f.name,
       location: f.location,
       mode: f.mode,
-      date: f.date,
+      endDate: f.endDate,
       mark: +f.mark,
       image: f.image,
       type: 'placement',
@@ -91,7 +91,7 @@ export class PlacementComponent implements OnInit {
       name: ['', [Validators.required]],
       location: ['', [Validators.required]],
       mode: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
       mark: ['', [Validators.required]],
       image: ['', Validators.required],
     });

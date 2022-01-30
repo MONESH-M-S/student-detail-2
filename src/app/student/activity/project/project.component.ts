@@ -72,7 +72,7 @@ export class ProjectComponent implements OnInit {
       location: f.location,
       mode: f.mode,
       prize: f.prize,
-      date: f.date,
+      endDate: f.endDate,
       mark: +f.mark,
       image: f.image,
       type: 'project',
@@ -93,7 +93,7 @@ export class ProjectComponent implements OnInit {
       location: ['', [Validators.required]],
       mode: ['', [Validators.required]],
       prize: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
       mark: ['', [Validators.required]],
       image: ['', Validators.required],
     });

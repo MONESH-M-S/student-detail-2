@@ -71,7 +71,7 @@ export class OtherComponent implements OnInit {
     const form = {
       name: f.name,
       location: f.location,
-      date: f.date,
+      endDate: f.endDate,
       mark: +f.mark,
       image: f.image,
       type: 'other',
@@ -90,7 +90,7 @@ export class OtherComponent implements OnInit {
     this.activityForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       location: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
       mark: ['', [Validators.required]],
       image: ['', Validators.required],
     });
