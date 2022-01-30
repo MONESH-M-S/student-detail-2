@@ -75,7 +75,7 @@ export class PaperComponent implements OnInit {
       date: f.date,
       mark: +f.mark,
       image: f.image,
-      type: 'other',
+      type: 'paper',
       uploadedDate: this.date,
     };
 
