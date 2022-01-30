@@ -1,1 +1,107 @@
-<p>other works!</p>
+<section>
+  <mat-card>
+    <div class="back-button">
+      <button (click)="goBack()" mat-button color="warn">
+        <mat-icon>keyboard_arrow_left</mat-icon>Back
+      </button>
+    </div>
+    <mat-card-title>
+      <h2 class="mt-2 text-base md:text-lg text-center">
+        Hi {{ name }}, Upload Your Social/Other Details here
+      </h2>
+    </mat-card-title>
+    <mat-card-content>
+      <h2 class="text-center mt-2 text-base md:text-lg text-purple-700">
+        For Other Activities likes donated blood etc..,
+        <br class="hidden md:block" />
+        Can be Addup Here!
+      </h2>
+      <form [formGroup]="activityForm">
+        <div class="grid mt-3 md:mt-5">
+          <div class="p-inputgroup col-12 mb-2">
+            <span class="p-inputgroup-addon"
+              ><i class="pi pi-th-large"></i
+            ></span>
+            <input
+              type="text"
+              pInputText
+              formControlName="name"
+              placeholder="Activity Name"
+            />
+          </div>
+          <div class="p-inputgroup col-12 mb-2">
+            <span class="p-inputgroup-addon"
+              ><i class="pi pi-map-marker"></i
+            ></span>
+            <input
+              type="text"
+              pInputText
+              formControlName="location"
+              placeholder="Activity Venue"
+            />
+          </div>
+          <div class="p-inputgroup col-12 mb-2">
+            <span class="p-inputgroup-addon"
+              ><i class="pi pi-plus-circle"></i
+            ></span>
+            <input
+              type="number"
+              pInputText
+              formControlName="mark"
+              placeholder="Mark For This"
+            />
+          </div>
+          <div class="p-inputgroup col-12 mb-2">
+            <span class="p-inputgroup-addon"
+              ><i class="pi pi-calendar"></i
+            ></span>
+            <p-calendar
+              dateFormat="dd-mm-yy"
+              formControlName="date"
+              placeholder="Enter Date"
+              class="w-full"
+            ></p-calendar>
+          </div>
+          <div class="col-12">
+            <p-fileUpload
+              mode="basic"
+              name="demo"
+              accept="image/*"
+              maxFileSize="1500000"
+              customUpload="true"
+              (uploadHandler)="onUpload($event)"
+              chooseLabel="Insert Proof"
+              [auto]="true"
+            >
+            </p-fileUpload>
+            <div class="img mt-2 text-center" *ngIf="imageDisplay">
+              <img src="{{ imageDisplay }}" width="80" alt="" />
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Submit"
+              class="p-button-success mr-2"
+              [disabled]="activityForm.invalid"
+              *ngIf="!isLoading"
+              (click)="onSubmit()"
+            ></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Clear"
+              (click)="onClear()"
+              class="p-button-danger ml-2"
+              *ngIf="!isLoading"
+            ></button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

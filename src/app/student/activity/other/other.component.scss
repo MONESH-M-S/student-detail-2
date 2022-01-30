@@ -1,0 +1,39 @@
+section {
+  mat-card {
+    width: 93%;
+    margin: auto;
+    min-height: 93vh;
+
+    .back-button {
+      mat-icon {
+        margin-top: -3px;
+      }
+    }
+    .grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .p-inputgroup {
+        width: 100%;
+        max-width: 430px;
+        margin: auto;
+      }
+
+      p-fileUpload {
+        text-align: center;
+      }
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
