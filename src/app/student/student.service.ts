@@ -29,4 +29,11 @@ export class StudentService {
       form
     );
   }
+
+  uploadStudentActivity(id: string, form: FormData) {
+    return this.http.post<{ activity: any; message: string }>(
+      `${this.BACKEND_URL}activity/${id}`,
+      form
+    );
+  }
 }
