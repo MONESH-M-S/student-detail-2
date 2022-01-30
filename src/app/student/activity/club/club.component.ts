@@ -67,13 +67,15 @@ export class ClubComponent implements OnInit {
     }
 
     const f = this.activityForm.value;
-    const form = new FormData();
-    form.append('name', f.name);
-    form.append('position', f.position);
-    form.append('mark', f.mark);
-    form.append('image', f.image);
-    form.append('type', 'club');
-    form.append('uploadedDate', this.date);
+
+    const form = {
+      name: f.name,
+      position: +f.position,
+      mark: +f.mark,
+      image: f.image,
+      type: 'club',
+      uploadedDate: this.date,
+    };
 
     this.studentService
       .uploadStudentActivity(this.id, form)

@@ -30,7 +30,7 @@ export class StudentService {
     );
   }
 
-  uploadStudentActivity(id: string, form: FormData) {
+  uploadStudentActivity(id: string, form: any) {
     return this.http.post<{ activity: any; message: string }>(
       `${this.BACKEND_URL}activity/${id}`,
       form

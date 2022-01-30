@@ -67,13 +67,15 @@ export class GateComponent implements OnInit {
     }
 
     const f = this.activityForm.value;
-    const form = new FormData();
-    form.append('name', f.name);
-    form.append('position', f.position);
-    form.append('mark', f.mark);
-    form.append('image', f.image);
-    form.append('type', 'club');
-    form.append('uploadedDate', this.date);
+
+    const form = {
+      'name': f.name,
+      'year': +f.year,
+      'mark': +f.mark,
+      'image': f.image,
+      'type': 'gate',
+      'uploadedDate': this.date
+    }
 
     this.studentService
       .uploadStudentActivity(this.id, form)
@@ -86,7 +88,7 @@ export class GateComponent implements OnInit {
   private _initForm() {
     this.activityForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      position: ['', [Validators.required]],
+      year: ['', [Validators.required]],
       mark: ['', [Validators.required]],
       image: ['', Validators.required],
     });
