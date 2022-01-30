@@ -74,7 +74,7 @@ export class OtherComponent implements OnInit {
       date: f.date,
       mark: +f.mark,
       image: f.image,
-      type: 'internship',
+      type: 'other',
       uploadedDate: this.date,
     };
 

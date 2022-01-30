@@ -9,7 +9,6 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { TagModule } from 'primeng/tag';
-import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { CalendarModule } from 'primeng/calendar';
     TooltipModule,
     InputSwitchModule,
     TagModule,
-    DropdownModule,
     CalendarModule,
   ],
   exports: [
@@ -38,7 +36,6 @@ import { CalendarModule } from 'primeng/calendar';
     TooltipModule,
     InputSwitchModule,
     TagModule,
-    DropdownModule,
     CalendarModule,
   ],
 })
