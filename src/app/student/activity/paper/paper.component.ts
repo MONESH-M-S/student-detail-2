@@ -14,7 +14,7 @@ export class PaperComponent implements OnInit {
   id: string;
   name: string;
   activityForm: FormGroup;
-  date: string;
+  date: any;
   imageDisplay: string;
   isLoading = false;
 
@@ -29,7 +29,7 @@ export class PaperComponent implements OnInit {
 
   ngOnInit(): void {
     this._initForm();
-    this.date = new Date().toDateString();
+    this.date = new Date();
     this.route.params.subscribe((params) => {
       if (params) {
         this.id = params['id'];

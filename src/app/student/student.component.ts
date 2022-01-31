@@ -14,6 +14,7 @@ export class StudentComponent implements OnInit {
   id: string;
   userData: User;
   userActivity: any;
+  isActivitiesAvailable = false;
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService,
@@ -35,7 +36,10 @@ export class StudentComponent implements OnInit {
         this.studentService
           .getStudentUploadedActivity(this.id)
           .subscribe((res) => {
-            console.log(res);
+            if (res.activities !== null) {
+              this.isActivitiesAvailable = true;
+              this.userActivity = res.activities;
+            }
           });
       }
     });

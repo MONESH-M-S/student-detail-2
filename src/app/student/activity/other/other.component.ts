@@ -14,7 +14,7 @@ export class OtherComponent implements OnInit {
   id: string;
   name: string;
   activityForm: FormGroup;
-  date: string;
+  date: any;
   file: File;
   imageDisplay: string;
   isLoading = false;
@@ -30,7 +30,7 @@ export class OtherComponent implements OnInit {
 
   ngOnInit(): void {
     this._initForm();
-    this.date = new Date().toDateString();
+    this.date = new Date();
     this.route.params.subscribe((params) => {
       if (params) {
         this.id = params['id'];

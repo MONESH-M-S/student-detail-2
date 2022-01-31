@@ -123,17 +123,17 @@ export class EditDetailComponent implements OnInit {
                       summary: 'Updated Successfully!',
                     });
                     window.setTimeout(() => {
+                      this.isLoading = false;
                       this.router.navigate([`s/${this.id}`]);
                     }, 2500);
                   } else {
+                    this.isLoading = false;
                     return this.messageService.add({
                       severity: 'error',
                       summary: res.message,
                     });
                   }
                 });
-
-              this.isLoading = false;
             }
           });
       }

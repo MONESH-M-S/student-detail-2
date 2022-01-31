@@ -31,6 +31,7 @@ import { InternComponent } from './student/activity/intern/intern.component';
 import { PlacementComponent } from './student/activity/placement/placement.component';
 import { NccComponent } from './student/activity/ncc/ncc.component';
 import { OtherComponent } from './student/activity/other/other.component';
+import { ViewActivityComponent } from './student/view-activity/view-activity.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { OtherComponent } from './student/activity/other/other.component';
     InternComponent,
     PlacementComponent,
     NccComponent,
-    OtherComponent
+    OtherComponent,
+    ViewActivityComponent
   ],
   imports: [
     BrowserModule,

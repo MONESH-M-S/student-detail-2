@@ -18,6 +18,7 @@ import { SportsComponent } from './student/activity/sports/sports.component';
 import { VacComponent } from './student/activity/vac/vac.component';
 import { EditDetailComponent } from './student/edit-detail/edit-detail.component';
 import { StudentComponent } from './student/student.component';
+import { ViewActivityComponent } from './student/view-activity/view-activity.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: ':id/placement', component: PlacementComponent },
       { path: ':id/ncc', component: NccComponent },
       { path: ':id/other', component: OtherComponent },
+      { path: ':id/a/:aid', component: ViewActivityComponent },
     ],
   },
   {
