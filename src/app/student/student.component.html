@@ -57,7 +57,7 @@
               <th pSortableColumn="name">
                 Name <p-sortIcon field="name"></p-sortIcon>
               </th>
-              <th pSortableColumn="mark">
+              <th pSortableColumn="mark" class="hidden xl:block">
                 Mark <p-sortIcon field="mark"></p-sortIcon>
               </th>
               <th>Added On</th>
@@ -68,7 +68,7 @@
           <ng-template pTemplate="body" let-activity>
             <tr>
               <td>{{ activity.name }}</td>
-              <td>{{ activity.mark }}</td>
+              <td class="hidden xl:block">{{ activity.mark }}</td>
               <td>{{ activity.uploadedDate | date: "dd-MM-yyyy" }}</td>
               <td>
                 <img
