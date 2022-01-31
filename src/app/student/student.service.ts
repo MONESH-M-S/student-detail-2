@@ -30,10 +30,16 @@ export class StudentService {
     );
   }
 
-  uploadStudentActivity(id: string, form: any) {
+  uploadStudentActivity(id: string, form: FormData) {
     return this.http.post<{ activity: any; message: string }>(
       `${this.BACKEND_URL}activity/${id}`,
       form
+    );
+  }
+
+  getStudentUploadedActivity(id: string) {
+    return this.http.get<{ activities: any; message: string }>(
+      `${this.BACKEND_URL}activity/${id}`
     );
   }
 }

@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { StudentService } from '../../student.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class ClubComponent implements OnInit {
     private route: ActivatedRoute,
     private studentService: StudentService,
     private location: Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -68,20 +70,34 @@ export class ClubComponent implements OnInit {
 
     const f = this.activityForm.value;
 
-    const form = {
-      name: f.name,
-      position: +f.position,
-      mark: +f.mark,
-      image: f.image,
-      type: 'club',
-      uploadedDate: this.date,
-    };
+    const formData = new FormData();
+    formData.append('name', f.name);
+    formData.append('position', f.position);
+    formData.append('image', f.image, f.name);
+    formData.append('mark', f.mark);
+    formData.append('type', 'club');
+    formData.append('uploadedDate', this.date);
 
     this.studentService
-      .uploadStudentActivity(this.id, form)
+      .uploadStudentActivity(this.id, formData)
       .subscribe((res) => {
-        this.isLoading = false;
-        console.log(res);
+        if (res.activity._id) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: res.message,
+          });
+          window.setTimeout(() => {
+            this.isLoading = false;
+            this.router.navigate([`s/${this.id}/a/${res.activity._id}`]);
+          }, 3500);
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: res.message,
+          });
+        }
       });
   }
 

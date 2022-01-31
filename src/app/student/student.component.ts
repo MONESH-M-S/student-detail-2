@@ -32,6 +32,11 @@ export class StudentComponent implements OnInit {
               this.userData = res?.user[0];
             }
           });
+        this.studentService
+          .getStudentUploadedActivity(this.id)
+          .subscribe((res) => {
+            console.log(res);
+          });
       }
     });
   }

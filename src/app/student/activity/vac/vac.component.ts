@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { StudentService } from '../../student.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class VacComponent implements OnInit {
     private route: ActivatedRoute,
     private studentService: StudentService,
     private location: Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -67,23 +69,37 @@ export class VacComponent implements OnInit {
 
     const f = this.activityForm.value;
 
-    const form = {
-      name: f.name,
-      location: f.location,
-      mode: f.mode,
-      startDate: f.startDate,
-      endDate: f.endDate,
-      mark: +f.mark,
-      image: f.image,
-      type: 'vac',
-      uploadedDate: this.date,
-    };
+    const formData = new FormData();
+    formData.append('name', f.name);
+    formData.append('location', f.location);
+    formData.append('mode', f.mode);
+    formData.append('startDate', f.startDate);
+    formData.append('endDate', f.endDate);
+    formData.append('mark', f.mark);
+    formData.append('image', f.image, f.name);
+    formData.append('type', 'vac');
+    formData.append('uploadedDate', this.date);
 
     this.studentService
-      .uploadStudentActivity(this.id, form)
+      .uploadStudentActivity(this.id, formData)
       .subscribe((res) => {
-        this.isLoading = false;
-        console.log(res);
+        if (res.activity._id) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: res.message,
+          });
+          window.setTimeout(() => {
+            this.isLoading = false;
+            this.router.navigate([`s/${this.id}/a/${res.activity._id}`]);
+          }, 3500);
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: res.message,
+          });
+        }
       });
   }
 
