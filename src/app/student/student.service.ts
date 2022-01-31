@@ -42,4 +42,10 @@ export class StudentService {
       `${this.BACKEND_URL}activity/${id}`
     );
   }
+
+  deleteStudentUploadedActivity(id: string) {
+    return this.http.delete<{ activityId: string; message: string }>(
+      `${this.BACKEND_URL}activity/${id}`
+    );
+  }
 }

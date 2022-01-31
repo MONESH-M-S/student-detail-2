@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { User } from '../home/user.model';
 import { ActivityComponent } from './activity/activity.component';
+import { DeleteActivityDialogComponent } from './delete-activity-dialog/delete-activity-dialog.component';
 import { StudentService } from './student.service';
 
 @Component({
@@ -19,7 +21,8 @@ export class StudentComponent implements OnInit {
     private route: ActivatedRoute,
     private studentService: StudentService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +59,42 @@ export class StudentComponent implements OnInit {
       },
       disableClose: true,
       hasBackdrop: true,
+    });
+  }
+
+  deleteActivity(id: string) {
+    let dialogRef = this.dialog.open(DeleteActivityDialogComponent);
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res === 'Delete') {
+        this.studentService
+          .deleteStudentUploadedActivity(id)
+          .subscribe((res) => {
+            if (res.activityId !== null) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: res.message,
+              });
+              this.studentService
+                .getStudentUploadedActivity(this.id)
+                .subscribe((res) => {
+                  if (res.activities !== null) {
+                    this.isActivitiesAvailable = true;
+                    this.userActivity = res.activities;
+                  } else {
+                    this.isActivitiesAvailable = false;
+                  }
+                });
+            } else {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: res.message,
+              });
+            }
+          });
+      }
     });
   }
 }

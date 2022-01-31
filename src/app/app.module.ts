@@ -32,6 +32,7 @@ import { PlacementComponent } from './student/activity/placement/placement.compo
 import { NccComponent } from './student/activity/ncc/ncc.component';
 import { OtherComponent } from './student/activity/other/other.component';
 import { ViewActivityComponent } from './student/view-activity/view-activity.component';
+import { DeleteActivityDialogComponent } from './student/delete-activity-dialog/delete-activity-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ViewActivityComponent } from './student/view-activity/view-activity.com
     PlacementComponent,
     NccComponent,
     OtherComponent,
-    ViewActivityComponent
+    ViewActivityComponent,
+    DeleteActivityDialogComponent
   ],
   imports: [
     BrowserModule,
