@@ -6,12 +6,21 @@
         <mat-icon>keyboard_arrow_left</mat-icon>Back
       </button>
     </div>
-    <mat-card-title>
+    <mat-card-title *ngIf="name">
       <h2
         class="mt-3 text-base md:text-lg font-semibold text-center line-height-2 px-3 md:px-0"
       >
         Hi {{ name }}, Upload Your Gate Exam Detail here
+        <br />
       </h2>
+      <h4
+        class="text-base mt-2 font-semibold text-center"
+        style="color: red"
+        *ngIf="editMode"
+      >
+        ( Uploaded Cretificate Cannot be Edited. If you need, try Delete &
+        upload this again! )
+      </h4>
     </mat-card-title>
     <mat-card-content>
       <form [formGroup]="activityForm">
@@ -54,7 +63,8 @@
             </mat-form-field>
           </div>
           <div class="col-12">
-            <p-fileUpload
+            <div *ngIf="!editMode">
+              <p-fileUpload
               mode="basic"
               name="demo"
               accept="image/*"
@@ -65,6 +75,7 @@
               [auto]="true"
             >
             </p-fileUpload>
+            </div>
             <div class="img mt-2 text-center" *ngIf="imageDisplay">
               <img src="{{ imageDisplay }}" width="80" alt="" />
             </div>
@@ -78,7 +89,17 @@
               label="Submit"
               class="p-button-success mr-2"
               [disabled]="activityForm.invalid"
-              *ngIf="!isLoading"
+              *ngIf="!isLoading && !editMode"
+              (click)="onSubmit()"
+            ></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Update"
+              class="p-button-success mr-2"
+              [disabled]="activityForm.invalid"
+              *ngIf="!isLoading && editMode"
               (click)="onSubmit()"
             ></button>
             <button

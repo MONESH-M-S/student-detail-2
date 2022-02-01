@@ -49,6 +49,13 @@ export class StudentService {
     );
   }
 
+  updateStudentActivity(form: any, id: string) {
+    return this.http.put<{ activity: any; message: string }>(
+      `${this.BACKEND_URL}activity/${id}`,
+      form
+    );
+  }
+
   deleteStudentUploadedActivity(id: string) {
     return this.http.delete<{ activityId: string; message: string }>(
       `${this.BACKEND_URL}activity/${id}`

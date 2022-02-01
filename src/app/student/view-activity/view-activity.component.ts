@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DeleteActivityDialogComponent } from '../delete-activity-dialog/delete-activity-dialog.component';
 import { StudentService } from '../student.service';
@@ -22,7 +22,8 @@ export class ViewActivityComponent implements OnInit {
     private route: ActivatedRoute,
     private studentService: StudentService,
     private dialog: MatDialog,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +42,16 @@ export class ViewActivityComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  editActivity() {
+    let modifiedType = this.activityDetail.type;
+    if (this.activityDetail.type === 'internship') {
+      modifiedType = 'intern';
+    }
+    this.router.navigate([`s/${this.activityDetail.creator}/${modifiedType}`], {
+      queryParams: { edit: true, aid: this.activityDetail._id },
+    });
   }
 
   deleteActivity() {

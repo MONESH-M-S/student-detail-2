@@ -69,7 +69,9 @@
           <ng-template pTemplate="body" let-activity>
             <tr>
               <td>{{ activity.name }}</td>
-              <td class="hidden xl:block">{{ activity.mark }}</td>
+              <td class="hidden xl:block">
+                {{ activity.mark }}
+              </td>
               <td>{{ activity.uploadedDate | date: "dd-MM-yyyy" }}</td>
               <td>
                 <img
@@ -95,7 +97,9 @@
                   icon="pi pi-pencil"
                   class="p-button-rounded p-button-success p-button-outlined mr-3"
                   pTooltip="Edit Activity"
-                  (click)="editActivity(activity.type, activity.creator, activity._id)"
+                  (click)="
+                    editActivity(activity.type, activity.creator, activity._id)
+                  "
                 ></button>
                 <button
                   pButton
