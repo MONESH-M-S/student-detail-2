@@ -66,7 +66,15 @@ export class StudentComponent implements OnInit {
     this.router.navigate([`s/${this.id}/a/${id}`]);
   }
 
-  editActivity(type: string, id: string) {}
+  editActivity(type: string, creator: string, id: string) {
+    let modifiedType = type;
+    if (type === 'internship') {
+      modifiedType = 'intern';
+    }
+    this.router.navigate([`s/${creator}/${modifiedType}`], {
+      queryParams: { edit: true, aid: id },
+    });
+  }
 
   deleteActivity(id: string) {
     let dialogRef = this.dialog.open(DeleteActivityDialogComponent);

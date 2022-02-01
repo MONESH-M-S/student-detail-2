@@ -95,7 +95,7 @@
                   icon="pi pi-pencil"
                   class="p-button-rounded p-button-success p-button-outlined mr-3"
                   pTooltip="Edit Activity"
-                  (click)="deleteAdmin(activity._id)"
+                  (click)="editActivity(activity.type, activity.creator, activity._id)"
                 ></button>
                 <button
                   pButton
