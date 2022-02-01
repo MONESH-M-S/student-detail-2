@@ -168,7 +168,7 @@ export class PlacementComponent implements OnInit {
   }
 
   private _setFormValue() {
-    if (this.aid !== null || this.aid !== undefined) {
+    if (this.aid !== null && this.aid !== undefined) {
       this.studentService.getActivityById(this.aid).subscribe((res) => {
         this.formValues = res.activity;
         this.activityForm.get('name').setValue(this.formValues.name);

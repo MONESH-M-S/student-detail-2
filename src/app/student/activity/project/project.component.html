@@ -9,7 +9,16 @@
     <mat-card-title *ngIf="name">
       <h2 class="mt-2 text-base md:text-lg text-center">
         Hi {{ name }}, Upload Your Presented Project Details here
+        <br />
       </h2>
+      <h4
+        class="text-base mt-2 font-semibold text-center"
+        style="color: red"
+        *ngIf="editMode"
+      >
+        ( Uploaded Cretificate Cannot be Edited. If you need, try Delete &
+        upload this again! )
+      </h4>
     </mat-card-title>
     <mat-card-content>
       <form [formGroup]="activityForm">
@@ -115,7 +124,7 @@
               label="Submit"
               class="p-button-success mr-2"
               [disabled]="activityForm.invalid"
-              *ngIf="!isLoading  && !editMode"
+              *ngIf="!isLoading && !editMode"
               (click)="onSubmit()"
             ></button>
             <button

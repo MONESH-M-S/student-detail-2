@@ -116,7 +116,10 @@ export class ProjectComponent implements OnInit {
     } else {
       const form = {
         name: f.name,
-        position: f.position,
+        location: f.location,
+        mode: f.mode,
+        prize: f.prize,
+        endDate: f.endDate,
         mark: f.mark,
         uploadedDate: this.date,
       };
@@ -159,18 +162,27 @@ export class ProjectComponent implements OnInit {
     } else {
       this.activityForm = this.formBuilder.group({
         name: ['', [Validators.required]],
-        position: ['', [Validators.required]],
+        location: ['', [Validators.required]],
+        endDate: ['', [Validators.required]],
+        mode: ['', [Validators.required]],
+        prize: ['', [Validators.required]],
         mark: ['', [Validators.required]],
       });
     }
   }
 
   private _setFormValue() {
-    if (this.aid !== null || this.aid !== undefined) {
+    if (this.aid !== null && this.aid !== undefined) {
       this.studentService.getActivityById(this.aid).subscribe((res) => {
         this.formValues = res.activity;
+        console.log(this.formValues);
         this.activityForm.get('name').setValue(this.formValues.name);
-        this.activityForm.get('position').setValue(this.formValues.position);
+        this.activityForm.get('location').setValue(this.formValues.location);
+        this.activityForm.get('prize').setValue(this.formValues.prize);
+        this.activityForm.get('mode').setValue(this.formValues.mode);
+        this.activityForm
+          .get('endDate')
+          .setValue(new Date(this.formValues.endDate));
         this.activityForm.get('mark').setValue(this.formValues.mark);
         this.imageDisplay = this.formValues.image;
       });
