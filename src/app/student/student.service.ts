@@ -37,9 +37,15 @@ export class StudentService {
     );
   }
 
+  getActivityById(id: string) {
+    return this.http.get<{ activity: any; message: string }>(
+      `${this.BACKEND_URL}activity/${id}`
+    );
+  }
+
   getStudentUploadedActivity(id: string) {
     return this.http.get<{ activities: any; message: string }>(
-      `${this.BACKEND_URL}activity/${id}`
+      `${this.BACKEND_URL}activity/s/${id}`
     );
   }
 

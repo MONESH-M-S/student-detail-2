@@ -1,1 +1,70 @@
-<p>view-activity works!</p>
+<p-toast></p-toast>
+<section *ngIf="activityDetail">
+  <mat-card>
+    <div class="back-button">
+      <button (click)="goBack()" [disabled]="isLoading" mat-button color="warn">
+        <mat-icon>keyboard_arrow_left</mat-icon>Back
+      </button>
+    </div>
+    <mat-card-title>
+      <h2 class="text-center font-semibold ms-3">Activity Detail</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="block md:flex mb-5">
+        <img
+          class="mr-0 mt-5 md:mr-5"
+          [src]="activityDetail?.image"
+          [alt]="activityDetail?.name"
+        />
+        <div class="details ml-0 md:ml-5 pt-0 md:pt-5">
+          <div *ngIf="activityDetail.type === 'club'">
+            <h3 class="mt-5">
+              Club Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Position: <span>{{ activityDetail.position }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <div class="buttons">
+            <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+            <button
+              mat-flat-button
+              (click)="onClickedRegister()"
+              color="primary"
+              class="mt-0 md:mt-5 mr-2"
+              pTooltip="Edit Details"
+              tooltipPosition="bottom"
+              *ngIf="isLoading"
+            >
+              Edit
+            </button>
+            <button
+              mat-flat-button
+              (click)="deleteActivity()"
+              color="warn"
+              class="mt-0 md:mt-5 mr-2"
+              pTooltip="Delete Activity"
+              tooltipPosition="bottom"
+              *ngIf="isLoading"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

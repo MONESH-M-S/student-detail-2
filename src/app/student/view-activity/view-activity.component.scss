@@ -1,0 +1,78 @@
+section {
+  mat-card {
+    width: 93%;
+    margin: auto;
+    min-height: 93vh;
+
+    mat-icon {
+      margin-top: -3px;
+    }
+
+    &-title {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    &-content {
+      width: 60%;
+      margin: auto;
+      img {
+        width: 45%;
+      }
+
+      @media (max-width: 750px) {
+        img {
+          width: 100%;
+        }
+      }
+      .details {
+        h3 {
+          margin: 0;
+          font-weight: 500;
+          font-size: 1.15rem;
+          span {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 800px) {
+      mat-card-content {
+        width: 70%;
+      }
+    }
+
+    @media (max-width: 450px) {
+      mat-card-content {
+        width: 90%;
+      }
+    }
+    .available-events {
+      h1 {
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: #713bd5;
+      }
+      ul {
+        li {
+          font-size: 1.3rem;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .description {
+      h1 {
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: var(--purple-900);
+      }
+
+      div {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

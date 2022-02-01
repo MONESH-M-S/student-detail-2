@@ -62,6 +62,12 @@ export class StudentComponent implements OnInit {
     });
   }
 
+  viewActivity(id: string) {
+    this.router.navigate([`s/${this.id}/a/${id}`]);
+  }
+
+  editActivity(type: string, id: string) {}
+
   deleteActivity(id: string) {
     let dialogRef = this.dialog.open(DeleteActivityDialogComponent);
 
