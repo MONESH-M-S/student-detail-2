@@ -37,7 +37,7 @@ export class DetailedTableComponent implements OnInit {
     });
   }
 
-  lockOrUnlockActivity(id: string) {}
+  lockActivity(id: string) {}
 
   viewActivity(id: string) {
     this.router.navigate([`admin/s/view/${id}`]);
