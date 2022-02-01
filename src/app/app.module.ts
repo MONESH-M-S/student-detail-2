@@ -34,6 +34,7 @@ import { OtherComponent } from './student/activity/other/other.component';
 import { ViewActivityComponent } from './student/view-activity/view-activity.component';
 import { DeleteActivityDialogComponent } from './student/delete-activity-dialog/delete-activity-dialog.component';
 import { DetailedTableComponent } from './admin/admin-home/student-detail/detailed-table/detailed-table.component';
+import { LockConformationDialogComponent } from './admin/admin-home/student-detail/detailed-table/lock-conformation-dialog/lock-conformation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { DetailedTableComponent } from './admin/admin-home/student-detail/detail
     OtherComponent,
     ViewActivityComponent,
     DeleteActivityDialogComponent,
-    DetailedTableComponent
+    DetailedTableComponent,
+    LockConformationDialogComponent
   ],
   imports: [
     BrowserModule,

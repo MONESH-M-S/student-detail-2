@@ -1,0 +1,13 @@
+<section>
+  <h2 mat-dialog-title class="font-semibold">Are you Sure?</h2>
+  <h3 class="font-normal">
+    <span class="font-semibold">Note: </span>After Locking a Acitvity you cannot
+    able to Edit!
+  </h3>
+  <div class="buttons" mat-dialog-actions>
+    <button mat-dialog-close mat-flat-button cdkFocusInitial>Cancel</button>
+    <button [mat-dialog-close]="'Lock'" mat-flat-button color="warn">
+      Lock
+    </button>
+  </div>
+</section>

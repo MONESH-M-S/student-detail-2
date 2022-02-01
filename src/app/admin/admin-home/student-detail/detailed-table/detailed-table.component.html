@@ -64,6 +64,7 @@
               class="p-button-rounded p-button-help p-button-outlined mr-3"
               pTooltip="Activity is Locked"
               *ngIf="activity.isLocked === true"
+              (click)="lockedActivity(activity.name)"
             ></button>
             <button
               pButton

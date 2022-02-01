@@ -55,6 +55,13 @@ export class AdminService {
     );
   }
 
+  lockActivityById(id: string) {
+    return this.http.put<{ activity: any; message: string }>(
+      `${this.BACKEND_URL}activity/lock-activity/${id}`,
+      id
+    );
+  }
+
   deleteAdminById(id: string) {
     return this.http.delete<{ adminId: string; message: string }>(
       `${this.BACKEND_URL}admin/${id}`
