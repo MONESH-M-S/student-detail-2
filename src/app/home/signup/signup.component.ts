@@ -56,8 +56,8 @@ export class SignupComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onUpload(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
+  onUpload(event: any) {
+    const file = event.files[0];
     this.signupForm.patchValue({ image: file });
     this.signupForm.get('image').updateValueAndValidity();
     const reader = new FileReader();
