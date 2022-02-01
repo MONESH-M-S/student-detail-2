@@ -43,6 +43,12 @@ export class AdminService {
     );
   }
 
+  getStudentActivitesById(id: string) {
+    return this.http.get<{ activities: any; message: string }>(
+      `${this.BACKEND_URL}activity/s/${id}`
+    );
+  }
+
   getAllAdmins() {
     return this.http.get<{ admins: Admin[]; message: string }>(
       `${this.BACKEND_URL}admin/`
@@ -52,6 +58,12 @@ export class AdminService {
   deleteAdminById(id: string) {
     return this.http.delete<{ adminId: string; message: string }>(
       `${this.BACKEND_URL}admin/${id}`
+    );
+  }
+
+  deleteStudentUploadedActivity(id: string) {
+    return this.http.delete<{ activityId: string; message: string }>(
+      `${this.BACKEND_URL}activity/${id}`
     );
   }
 }

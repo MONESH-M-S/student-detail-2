@@ -33,6 +33,7 @@ import { NccComponent } from './student/activity/ncc/ncc.component';
 import { OtherComponent } from './student/activity/other/other.component';
 import { ViewActivityComponent } from './student/view-activity/view-activity.component';
 import { DeleteActivityDialogComponent } from './student/delete-activity-dialog/delete-activity-dialog.component';
+import { DetailedTableComponent } from './admin/admin-home/student-detail/detailed-table/detailed-table.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { DeleteActivityDialogComponent } from './student/delete-activity-dialog/
     NccComponent,
     OtherComponent,
     ViewActivityComponent,
-    DeleteActivityDialogComponent
+    DeleteActivityDialogComponent,
+    DetailedTableComponent
   ],
   imports: [
     BrowserModule,

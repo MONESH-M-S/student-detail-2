@@ -29,7 +29,6 @@ export class ViewActivityComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       if (params) {
-        this.userId = params['id'];
         this.activityId = params['aid'];
       }
       this.studentService.getActivityById(this.activityId).subscribe((res) => {

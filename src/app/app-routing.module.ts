@@ -47,6 +47,7 @@ const routes: Routes = [
       { path: '', component: AdminComponent },
       { path: ':name', component: AdminHomeComponent },
       { path: 'show-admins/:id', component: ShowAdminsComponent },
+      { path: 's/view/:aid', component: ViewActivityComponent },
       { path: 's/:id', component: StudentDetailComponent },
     ],
   },

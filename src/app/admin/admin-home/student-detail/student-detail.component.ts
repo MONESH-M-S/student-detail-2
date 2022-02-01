@@ -15,7 +15,6 @@ export class StudentDetailComponent implements OnInit {
   projectCount: number = 0;
   total: number = 0;
   studentDetail: any;
-  activityArray: any;
 
   constructor(
     private adminService: AdminService,
@@ -33,8 +32,8 @@ export class StudentDetailComponent implements OnInit {
     });
     this.adminService.getStudentDetailById(this.id).subscribe((res) => {
       this.studentDetail = res?.user[0];
+      this.isLoading = false;
     });
-    this.isLoading = false;
   }
 
   goBack() {
