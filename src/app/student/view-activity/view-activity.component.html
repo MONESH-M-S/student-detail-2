@@ -17,6 +17,47 @@
           [alt]="activityDetail?.name"
         />
         <div class="details ml-0 md:ml-5 pt-0 md:pt-5">
+          <!-- Paper/Project -->
+          <div
+            *ngIf="
+              activityDetail.type === 'project' ||
+              activityDetail.type === 'paper'
+            "
+          >
+            <h3 class="mt-5">
+              Event Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Event Venue: <span>{{ activityDetail.location }}</span>
+            </h3>
+            <br />
+            <h3>
+              Event Mode: <span>{{ activityDetail.mode }}</span>
+            </h3>
+            <br />
+            <h3>
+              Prize: <span>{{ activityDetail.prize }}</span>
+            </h3>
+            <br />
+            <h3>
+              Event Date:
+              <span>{{ activityDetail.endDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <!-- Club -->
           <div *ngIf="activityDetail.type === 'club'">
             <h3 class="mt-5">
               Club Name:
@@ -25,6 +66,237 @@
             <br />
             <h3>
               Position: <span>{{ activityDetail.position }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <!-- Vac -->
+          <div *ngIf="activityDetail.type === 'vac'">
+            <h3 class="mt-5">
+              Course Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Course Platform: <span>{{ activityDetail.location }}</span>
+            </h3>
+            <br />
+            <h3>
+              Course Mode: <span>{{ activityDetail.mode }}</span>
+            </h3>
+            <br />
+            <h3>
+              Course Start Date:
+              <span>{{ activityDetail.startDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Course End Date:
+              <span>{{ activityDetail.endDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <!-- Gate -->
+          <div *ngIf="activityDetail.type === 'gate'">
+            <h3 class="mt-5">
+              Subject Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Year: <span>{{ activityDetail.year }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <!-- Intern -->
+          <div *ngIf="activityDetail.type === 'intern'">
+            <h3 class="mt-5">
+              Company Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Company Location: <span>{{ activityDetail.location }}</span>
+            </h3>
+            <br />
+            <h3>
+              Stipend: <span>{{ activityDetail.stipend }}</span>
+            </h3>
+            <br />
+            <h3>
+              Internship Start Date:
+              <span>{{ activityDetail.startDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Internship End Date:
+              <span>{{ activityDetail.endDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <!-- Placement -->
+          <div *ngIf="activityDetail.type === 'placement'">
+            <h3 class="mt-5">
+              Company Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Company Location: <span>{{ activityDetail.location }}</span>
+            </h3>
+            <br />
+            <h3>
+              Placement Mode: <span>{{ activityDetail.mode }}</span>
+            </h3>
+            <br />
+            <h3>
+              Placed Date:
+              <span>{{ activityDetail.endDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <!-- Other -->
+          <div *ngIf="activityDetail.type === 'other'">
+            <h3 class="mt-5">
+              Activity Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Activity Location: <span>{{ activityDetail.location }}</span>
+            </h3>
+            <br />
+            <h3>
+              Activity Date:
+              <span>{{ activityDetail.endDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <!-- Ncc -->
+          <div *ngIf="activityDetail.type === 'ncc'">
+            <h3 class="mt-5">
+              Camp Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Camp Location: <span>{{ activityDetail.location }}</span>
+            </h3>
+            <br />
+            <h3>
+              Position in NCC:
+              <span>{{ activityDetail.position }}</span>
+            </h3>
+            <br />
+            <h3>
+              Camp Begin Date:
+              <span>{{ activityDetail.startDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Camp End Date:
+              <span>{{ activityDetail.endDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Mark:
+              <span>{{ activityDetail.mark }}</span>
+            </h3>
+            <br />
+            <h3>
+              Uploaded Date:
+              <span>{{ activityDetail.uploadedDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+          </div>
+          <!-- Sports -->
+          <div *ngIf="activityDetail.type === 'sports'">
+            <h3 class="mt-5">
+              Event Name:
+              <span>{{ activityDetail.name }}</span>
+            </h3>
+            <br />
+            <h3>
+              Event Location: <span>{{ activityDetail.location }}</span>
+            </h3>
+            <br />
+            <h3>
+              Game Name:
+              <span>{{ activityDetail.game }}</span>
+            </h3>
+            <br />
+            <h3>
+              Prize:
+              <span>{{ activityDetail.prize }}</span>
+            </h3>
+            <br />
+            <h3>
+              Event Begin Date:
+              <span>{{ activityDetail.startDate | date: "dd-MM-yy" }}</span>
+            </h3>
+            <br />
+            <h3>
+              Event End Date:
+              <span>{{ activityDetail.endDate | date: "dd-MM-yy" }}</span>
             </h3>
             <br />
             <h3>

@@ -19,6 +19,7 @@ section {
       margin: auto;
       img {
         width: 45%;
+        object-fit: contain;
       }
 
       @media (max-width: 750px) {
