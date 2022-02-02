@@ -35,6 +35,8 @@ import { ViewActivityComponent } from './student/view-activity/view-activity.com
 import { DeleteActivityDialogComponent } from './student/delete-activity-dialog/delete-activity-dialog.component';
 import { DetailedTableComponent } from './admin/admin-home/student-detail/detailed-table/detailed-table.component';
 import { LockConformationDialogComponent } from './admin/admin-home/student-detail/detailed-table/lock-conformation-dialog/lock-conformation-dialog.component';
+import { ShowAllMarksComponent } from './admin/admin-home/show-all-marks/show-all-marks.component';
+import { MarkSplitupComponent } from './admin/admin-home/student-detail/mark-splitup/mark-splitup.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { LockConformationDialogComponent } from './admin/admin-home/student-deta
     ViewActivityComponent,
     DeleteActivityDialogComponent,
     DetailedTableComponent,
-    LockConformationDialogComponent
+    LockConformationDialogComponent,
+    ShowAllMarksComponent,
+    MarkSplitupComponent
   ],
   imports: [
     BrowserModule,
