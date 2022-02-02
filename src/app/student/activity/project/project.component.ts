@@ -175,7 +175,6 @@ export class ProjectComponent implements OnInit {
     if (this.aid !== null && this.aid !== undefined) {
       this.studentService.getActivityById(this.aid).subscribe((res) => {
         this.formValues = res.activity;
-        console.log(this.formValues);
         this.activityForm.get('name').setValue(this.formValues.name);
         this.activityForm.get('location').setValue(this.formValues.location);
         this.activityForm.get('prize').setValue(this.formValues.prize);

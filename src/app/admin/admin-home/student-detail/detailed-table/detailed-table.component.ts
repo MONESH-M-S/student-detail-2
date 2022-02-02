@@ -84,6 +84,16 @@ export class DetailedTableComponent implements OnInit {
     this.router.navigate([`admin/s/view/${id}`]);
   }
 
+  editActivity(type: string, creator: string, id: string) {
+    let modifiedType = type;
+    if (type === 'internship') {
+      modifiedType = 'intern';
+    }
+    this.router.navigate([`s/${creator}/${modifiedType}`], {
+      queryParams: { edit: true, aid: id },
+    });
+  }
+
   deleteActivity(id: string) {
     let dialogRef = this.dialog.open(DeleteActivityDialogComponent);
     dialogRef.afterClosed().subscribe((res) => {

@@ -176,8 +176,12 @@ export class VacComponent implements OnInit {
         this.formValues = res.activity;
         this.activityForm.get('name').setValue(this.formValues.name);
         this.activityForm.get('location').setValue(this.formValues.location);
-        this.activityForm.get('startDate').setValue(this.formValues.startDate);
-        this.activityForm.get('endDate').setValue(this.formValues.endDate);
+        this.activityForm
+          .get('startDate')
+          .setValue(new Date(this.formValues.startDate));
+        this.activityForm
+          .get('endDate')
+          .setValue(new Date(this.formValues.endDate));
         this.activityForm.get('mode').setValue(this.formValues.mode);
         this.activityForm.get('mark').setValue(this.formValues.mark);
         this.imageDisplay = this.formValues.image;

@@ -50,30 +50,9 @@ section {
         width: 90%;
       }
     }
-    .available-events {
-      h1 {
-        font-weight: 600;
-        font-size: 1.5rem;
-        color: #713bd5;
-      }
-      ul {
-        li {
-          font-size: 1.3rem;
-          font-weight: 500;
-        }
-      }
-    }
 
-    .description {
-      h1 {
-        font-weight: 600;
-        font-size: 1.5rem;
-        color: var(--purple-900);
-      }
-
-      div {
-        font-size: 1.2rem;
-      }
+    .locked {
+      color: #e53e29;
     }
   }
 }

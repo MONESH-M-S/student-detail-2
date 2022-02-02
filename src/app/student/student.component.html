@@ -100,6 +100,7 @@
                   (click)="
                     editActivity(activity.type, activity.creator, activity._id)
                   "
+                  *ngIf="activity.isLocked === false"
                 ></button>
                 <button
                   pButton
@@ -109,6 +110,16 @@
                   class="p-button-rounded p-button-danger p-button-outlined mr-3"
                   pTooltip="Delete Activity"
                   (click)="deleteActivity(activity._id)"
+                  *ngIf="activity.isLocked === false"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-lock"
+                  class="p-button-rounded p-button-help p-button-outlined mr-3"
+                  pTooltip="Activity is Locked by your Mentor"
+                  *ngIf="activity.isLocked === true"
                 ></button>
               </td>
             </tr>

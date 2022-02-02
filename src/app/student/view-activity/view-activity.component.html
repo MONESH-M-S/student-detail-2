@@ -26,19 +26,20 @@
           >
             <h3 class="mt-5">
               Event Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Event Venue: <span>{{ activityDetail.location }}</span>
+              Event Venue:
+              <span>{{ activityDetail.location | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Event Mode: <span>{{ activityDetail.mode }}</span>
+              Event Mode: <span>{{ activityDetail.mode | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Prize: <span>{{ activityDetail.prize }}</span>
+              Prize: <span>{{ activityDetail.prize | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -61,11 +62,11 @@
           <div *ngIf="activityDetail.type === 'club'">
             <h3 class="mt-5">
               Club Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Position: <span>{{ activityDetail.position }}</span>
+              Position: <span>{{ activityDetail.position | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -83,15 +84,16 @@
           <div *ngIf="activityDetail.type === 'vac'">
             <h3 class="mt-5">
               Course Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Course Platform: <span>{{ activityDetail.location }}</span>
+              Course Platform:
+              <span>{{ activityDetail.location | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Course Mode: <span>{{ activityDetail.mode }}</span>
+              Course Mode: <span>{{ activityDetail.mode | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -119,7 +121,7 @@
           <div *ngIf="activityDetail.type === 'gate'">
             <h3 class="mt-5">
               Subject Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -141,11 +143,12 @@
           <div *ngIf="activityDetail.type === 'intern'">
             <h3 class="mt-5">
               Company Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Company Location: <span>{{ activityDetail.location }}</span>
+              Company Location:
+              <span>{{ activityDetail.location | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -177,15 +180,16 @@
           <div *ngIf="activityDetail.type === 'placement'">
             <h3 class="mt-5">
               Company Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Company Location: <span>{{ activityDetail.location }}</span>
+              Company Location:
+              <span>{{ activityDetail.location | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Placement Mode: <span>{{ activityDetail.mode }}</span>
+              Placement Mode: <span>{{ activityDetail.mode | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -208,11 +212,12 @@
           <div *ngIf="activityDetail.type === 'other'">
             <h3 class="mt-5">
               Activity Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Activity Location: <span>{{ activityDetail.location }}</span>
+              Activity Location:
+              <span>{{ activityDetail.location | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -235,16 +240,17 @@
           <div *ngIf="activityDetail.type === 'ncc'">
             <h3 class="mt-5">
               Camp Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Camp Location: <span>{{ activityDetail.location }}</span>
+              Camp Location:
+              <span>{{ activityDetail.location | titlecase }}</span>
             </h3>
             <br />
             <h3>
               Position in NCC:
-              <span>{{ activityDetail.position }}</span>
+              <span>{{ activityDetail.position | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -272,21 +278,22 @@
           <div *ngIf="activityDetail.type === 'sports'">
             <h3 class="mt-5">
               Event Name:
-              <span>{{ activityDetail.name }}</span>
+              <span>{{ activityDetail.name | titlecase }}</span>
             </h3>
             <br />
             <h3>
-              Event Location: <span>{{ activityDetail.location }}</span>
+              Event Location:
+              <span>{{ activityDetail.location | titlecase }}</span>
             </h3>
             <br />
             <h3>
               Game Name:
-              <span>{{ activityDetail.game }}</span>
+              <span>{{ activityDetail.game | titlecase }}</span>
             </h3>
             <br />
             <h3>
               Prize:
-              <span>{{ activityDetail.prize }}</span>
+              <span>{{ activityDetail.prize | titlecase }}</span>
             </h3>
             <br />
             <h3>
@@ -310,8 +317,8 @@
             </h3>
             <br />
           </div>
-          <div class="buttons">
-            <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+          <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+          <div class="buttons" *ngIf="!isLoading">
             <button
               mat-flat-button
               (click)="editActivity()"
@@ -319,7 +326,7 @@
               class="mt-0 md:mt-5 mr-2"
               pTooltip="Edit Details"
               tooltipPosition="bottom"
-              *ngIf="!isLoading"
+              *ngIf="activityDetail.isLocked === false"
             >
               Edit
             </button>
@@ -330,11 +337,15 @@
               class="mt-0 md:mt-5 mr-2"
               pTooltip="Delete Activity"
               tooltipPosition="bottom"
-              *ngIf="!isLoading"
+              *ngIf="activityDetail.isLocked === false"
             >
               Delete
             </button>
           </div>
+          <h3 *ngIf="activityDetail.isLocked" class="locked font-semibold">
+            This Activity is locked by admin, to edit or delete contact your
+            Mentor!
+          </h3>
         </div>
       </div>
     </mat-card-content>
