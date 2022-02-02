@@ -1,0 +1,38 @@
+section {
+  mat-card {
+    width: 93%;
+    margin: auto;
+    min-height: 93vh;
+
+    .table {
+      width: 80%;
+      margin: auto;
+      text-align: center;
+
+      .download {
+        margin-top: -5px;
+      }
+
+      h1 {
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 3px;
+        word-spacing: 4.5px;
+
+        span {
+          word-spacing: 3.5px;
+          letter-spacing: 1.5px;
+        }
+      }
+
+      .event-title {
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .total {
+        font-weight: 600;
+      }
+    }
+  }
+}

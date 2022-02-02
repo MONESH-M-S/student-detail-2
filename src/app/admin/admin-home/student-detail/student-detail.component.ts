@@ -40,5 +40,7 @@ export class StudentDetailComponent implements OnInit {
     this.location.back();
   }
 
-  onRouteMarkSplitup() {}
+  onRouteMarkSplitup() {
+    this.router.navigate([`admin/s/mark-splitup/${this.id}`]);
+  }
 }

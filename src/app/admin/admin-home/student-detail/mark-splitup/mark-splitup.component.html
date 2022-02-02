@@ -1,1 +1,52 @@
-<p>mark-splitup works!</p>
+<section>
+  <mat-card>
+    <div class="back-button">
+      <button (click)="goBack()" mat-button color="warn">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+        Back
+      </button>
+    </div>
+    <div class="table">
+      <h1>mark splitup - {{ name }}</h1>
+      <div
+        class="card"
+        styleClass="datatable-gridlines"
+        scrollable="true"
+        scrollHeight="400px"
+      >
+        <p-table [value]="userMarks" responsiveLayout="scroll">
+          <ng-template pTemplate="caption">
+            <div class="flex">
+              <button
+                (click)="exportExcel()"
+                mat-button
+                pTooltip="Download as Excel"
+                color="primary"
+              >
+                <mat-icon class="download">cloud_download</mat-icon> Excel
+              </button>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th pSortableColumn="event">
+                Event <p-sortIcon field="event"></p-sortIcon>
+              </th>
+              <th pSortableColumn="mark">
+                Mark Obtained <p-sortIcon field="mark"></p-sortIcon>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-detail>
+            <tr>
+              <td class="event-title">
+                {{ detail.event }}
+              </td>
+              <td>{{ detail.mark }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </mat-card>
+</section>

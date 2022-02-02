@@ -79,4 +79,10 @@ export class AdminService {
       `${this.BACKEND_URL}mark/`
     );
   }
+
+  getMarkById(id: string) {
+    return this.http.get<{ mark: any; message: string }>(
+      `${this.BACKEND_URL}mark/${id}`
+    );
+  }
 }
