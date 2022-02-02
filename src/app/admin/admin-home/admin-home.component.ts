@@ -67,4 +67,8 @@ export class AdminHomeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {});
   }
+
+  showAllMarks() {
+    this.router.navigate([`admin/show-marks/${this.id}`]);
+  }
 }

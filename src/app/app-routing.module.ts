@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { ShowAdminsComponent } from './admin/admin-home/show-admins/show-admins.component';
+import { ShowAllMarksComponent } from './admin/admin-home/show-all-marks/show-all-marks.component';
 import { StudentDetailComponent } from './admin/admin-home/student-detail/student-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
@@ -47,6 +48,7 @@ const routes: Routes = [
       { path: '', component: AdminComponent },
       { path: ':name', component: AdminHomeComponent },
       { path: 'show-admins/:id', component: ShowAdminsComponent },
+      { path: 'show-marks/:id', component: ShowAllMarksComponent },
       { path: 's/view/:aid', component: ViewActivityComponent },
       { path: 's/:id', component: StudentDetailComponent },
     ],

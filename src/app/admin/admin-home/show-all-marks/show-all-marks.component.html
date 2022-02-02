@@ -1,1 +1,89 @@
-<p>show-all-marks works!</p>
+<section>
+  <mat-card>
+    <div class="back-button">
+      <button (click)="goBack()" mat-button color="warn">
+        <mat-icon>keyboard_arrow_left</mat-icon>Back
+      </button>
+    </div>
+    <mat-card-header>
+      <div class="title">Total Marks</div>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="table">
+        <div
+          class="card"
+          styleClass="p-datatable-gridlines"
+          scrollable="true"
+          scrollHeight="400px"
+        >
+          <p-table
+            #dt
+            [value]="marks"
+            responsiveLayout="scroll"
+            [scrollable]="true"
+            scrollHeight="500px"
+            [globalFilterFields]="['username', 'rollno']"
+          >
+            <ng-template pTemplate="caption">
+              <div class="flex">
+                <button
+                  (click)="exportExcel()"
+                  mat-button
+                  pTooltip="Download as Excel"
+                  color="primary"
+                >
+                  <mat-icon class="download">cloud_download</mat-icon> Excel
+                </button>
+                <span class="p-input-icon-left ml-auto">
+                  <i class="pi pi-search"></i>
+                  <input
+                    pInputText
+                    type="text"
+                    (input)="dt.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Search keyword"
+                  />
+                </span>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th pSortableColumn="name">
+                  Name <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="roll">
+                  Roll No. <p-sortIcon field="roll"></p-sortIcon>
+                </th>
+                <th pSortableColumn="total">
+                  Total <p-sortIcon field="total"></p-sortIcon>
+                </th>
+                <th>
+                  Obtained Marks 
+                  <p-columnFilter
+                    type="numeric"
+                    field="obtained"
+                    display="menu"
+                  ></p-columnFilter>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-detail>
+              <tr>
+                <td>
+                  <p>{{ detail.username | titlecase }}</p>
+                </td>
+                <td>{{ detail.rollno }}</td>
+                <td>{{ detail.total }}</td>
+                <td>{{ detail.obtained }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No Students found.</td>
+                </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -73,4 +73,10 @@ export class AdminService {
       `${this.BACKEND_URL}activity/${id}`
     );
   }
+
+  getAllMarks() {
+    return this.http.get<{ marks: any; message: string }>(
+      `${this.BACKEND_URL}mark/`
+    );
+  }
 }

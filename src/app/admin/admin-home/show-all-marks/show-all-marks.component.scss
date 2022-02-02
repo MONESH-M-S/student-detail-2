@@ -1,0 +1,27 @@
+section {
+  mat-card {
+    width: 93%;
+    margin: auto;
+    min-height: 93vh;
+
+    .download {
+      margin-top: -5px;
+    }
+
+    mat-card-header {
+      justify-content: center;
+      .title {
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 1.3px;
+        margin-bottom: 10px;
+      }
+    }
+    mat-card-content {
+      .name {
+        text-transform: capitalize;
+        font-weight: 500;
+      }
+    }
+  }
+}
