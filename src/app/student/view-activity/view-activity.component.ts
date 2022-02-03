@@ -16,6 +16,7 @@ export class ViewActivityComponent implements OnInit {
   activityId: string;
   activityDetail: any;
   isLoading = false;
+  deletedActivity: any;
 
   constructor(
     private location: Location,
@@ -58,32 +59,61 @@ export class ViewActivityComponent implements OnInit {
       let dialogRef = this.dialog.open(DeleteActivityDialogComponent);
 
       dialogRef.afterClosed().subscribe((res) => {
+        this.isLoading = true;
         if (res === 'Delete') {
           this.studentService
-            .deleteStudentUploadedActivity(this.activityId)
+            .getActivityById(this.activityId)
             .subscribe((res) => {
-              this.isLoading = true;
-              if (res.activityId !== null) {
-                this.messageService.add({
-                  severity: 'success',
-                  summary: 'Success',
-                  detail: res.message,
-                });
-                window.setTimeout(() => {
-                  this.isLoading = false;
-                  return this.goBack();
-                }, 2500);
+              if (res.activity) {
+                this.deletedActivity = res.activity;
+                this.studentService
+                  .deleteStudentUploadedActivity(this.activityId)
+                  .subscribe((res) => {
+                    if (res.activityId !== null) {
+                      const type = this.deletedActivity.type;
+                      const mark = 0 - this.deletedActivity.mark;
+                      const creator = this.deletedActivity.creator;
+                      this.studentService
+                        .updateMarkById(type, creator, mark)
+                        .subscribe((res) => {
+                          if (res.message === 'Mark Updated!') {
+                            this.messageService.add({
+                              severity: 'success',
+                              summary: 'Success',
+                              detail: 'Activity Deleted!',
+                            });
+                            window.setTimeout(() => {
+                              this.isLoading = false;
+                              this.goBack();
+                            }, 2500);
+                          } else {
+                            this.messageService.add({
+                              severity: 'error',
+                              summary: 'Error',
+                              detail:
+                                'Activity deleted, Mark Not updated Contact Admin!',
+                            });
+                          }
+                        });
+                    } else {
+                      this.messageService.add({
+                        severity: 'error',
+                        summary: 'Error',
+                        detail: 'Error, Activity not deleted!',
+                      });
+                    }
+                  });
               } else {
-                this.isLoading = false;
                 this.messageService.add({
                   severity: 'error',
                   summary: 'Error',
-                  detail: res.message,
+                  detail: 'Error, Cannot be deleted contact admin',
                 });
               }
             });
         }
       });
     }
+    this.isLoading = false;
   }
 }
