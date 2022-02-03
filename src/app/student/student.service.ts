@@ -43,6 +43,12 @@ export class StudentService {
     );
   }
 
+  getStudentMarkById(id: string) {
+    return this.http.get<{ mark: any; message: string }>(
+      `${this.BACKEND_URL}mark/${id}`
+    );
+  }
+
   getStudentUploadedActivity(id: string) {
     return this.http.get<{ activities: any; message: string }>(
       `${this.BACKEND_URL}activity/s/${id}`

@@ -45,8 +45,17 @@
       >
         Upload a Activity to view history
       </h2>
+      <h2
+        *ngIf="isActivitiesAvailable"
+        class="card mt-4 text-center font-semibold"
+      >
+        Your Total -
+        <span class="text-pink-700">{{ studentMarkDetail?.total }},</span
+        > Marks Gained -
+        <span class="text-pink-700">{{ studentMarkDetail?.obtained }}</span>
+      </h2>
       <div *ngIf="isActivitiesAvailable" class="card hidden lg:block mt-5">
-        <h2 class="ml-2 mt-4">Activities Added by You,</h2>
+        <h2 class="ml-2 mt-1">Activities Added by You,</h2>
         <p-table
           [value]="userActivity"
           [scrollable]="true"

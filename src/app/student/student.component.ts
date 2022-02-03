@@ -18,6 +18,8 @@ export class StudentComponent implements OnInit {
   userActivity: any;
   isActivitiesAvailable = false;
   deletedActivity: any;
+  studentMarkDetail: any;
+
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService,
@@ -45,6 +47,11 @@ export class StudentComponent implements OnInit {
               this.userActivity = res.activities;
             }
           });
+        this.studentService.getStudentMarkById(this.id).subscribe((res) => {
+          if (res.mark) {
+            this.studentMarkDetail = res.mark[0];
+          }
+        });
       }
     });
   }
