@@ -15,6 +15,7 @@ export class DetailedTableComponent implements OnInit {
   id: string;
   activityArray: any;
   isActivitiesAvailable = false;
+  deletedActivity: any;
 
   constructor(
     private adminService: AdminService,
@@ -98,31 +99,62 @@ export class DetailedTableComponent implements OnInit {
     let dialogRef = this.dialog.open(DeleteActivityDialogComponent);
     dialogRef.afterClosed().subscribe((res) => {
       if (res === 'Delete') {
-        this.adminService.deleteStudentUploadedActivity(id).subscribe((res) => {
-          if (res.activityId !== null) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: res.message,
-            });
-            this.adminService
-              .getStudentActivitesById(this.id)
-              .subscribe((res) => {
-                if (res.activities !== null) {
-                  this.isActivitiesAvailable = true;
-                  this.activityArray = res.activities;
-                } else {
-                  this.isActivitiesAvailable = false;
-                }
+        if (res === 'Delete') {
+          this.adminService.getActivityById(id).subscribe((res) => {
+            if (res.activity) {
+              this.deletedActivity = res.activity;
+              this.adminService
+                .deleteStudentUploadedActivity(id)
+                .subscribe((res) => {
+                  if (res.activityId !== null) {
+                    const type = this.deletedActivity.type;
+                    const mark = 0 - this.deletedActivity.mark;
+                    const creator = this.deletedActivity.creator;
+                    this.adminService
+                      .updateMarkById(type, creator, mark)
+                      .subscribe((res) => {
+                        if (res.message === 'Mark Updated!') {
+                          this.messageService.add({
+                            severity: 'success',
+                            summary: 'Success',
+                            detail: 'Activity Deleted!',
+                          });
+                          this.adminService
+                            .getStudentActivitesById(this.id)
+                            .subscribe((res) => {
+                              if (res.activities !== null) {
+                                this.isActivitiesAvailable = true;
+                                this.activityArray = res.activities;
+                              } else {
+                                this.isActivitiesAvailable = false;
+                              }
+                            });
+                        } else {
+                          this.messageService.add({
+                            severity: 'error',
+                            summary: 'Error',
+                            detail:
+                              'Activity deleted, Mark Not updated Contact Admin!',
+                          });
+                        }
+                      });
+                  } else {
+                    this.messageService.add({
+                      severity: 'error',
+                      summary: 'Error',
+                      detail: 'Error, Activity not deleted!',
+                    });
+                  }
+                });
+            } else {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: 'Error, Cannot be deleted contact admin',
               });
-          } else {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: res.message,
-            });
-          }
-        });
+            }
+          });
+        }
       }
     });
   }

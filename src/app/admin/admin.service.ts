@@ -49,9 +49,23 @@ export class AdminService {
     );
   }
 
+  getActivityById(id: string) {
+    return this.http.get<{ activity: any; message: string }>(
+      `${this.BACKEND_URL}activity/${id}`
+    );
+  }
+
   getAllAdmins() {
     return this.http.get<{ admins: Admin[]; message: string }>(
       `${this.BACKEND_URL}admin/`
+    );
+  }
+
+  updateMarkById(type: string, id: string, mark: number) {
+    const updateMark = { mark: mark };
+    return this.http.put<{ message: string }>(
+      `${this.BACKEND_URL}mark/${type}/${id}`,
+      updateMark
     );
   }
 
