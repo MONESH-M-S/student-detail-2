@@ -56,6 +56,14 @@ export class StudentService {
     );
   }
 
+  updateMarkById(type: string, id: string, mark: number) {
+    const updateMark = { mark: mark };
+    return this.http.put<{ message: string }>(
+      `${this.BACKEND_URL}mark/${type}/${id}`,
+      updateMark
+    );
+  }
+
   deleteStudentUploadedActivity(id: string) {
     return this.http.delete<{ activityId: string; message: string }>(
       `${this.BACKEND_URL}activity/${id}`

@@ -78,6 +78,7 @@ export class VacComponent implements OnInit {
     }
 
     const f = this.activityForm.value;
+    const mark = f.mark;
 
     const formData = new FormData();
     if (this.editMode === false) {
@@ -95,15 +96,30 @@ export class VacComponent implements OnInit {
         .uploadStudentActivity(this.id, formData)
         .subscribe((res) => {
           if (res.activity._id) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: res.message,
-            });
-            window.setTimeout(() => {
-              this.isLoading = false;
-              this.router.navigate([`s/${this.id}/a/${res.activity._id}`]);
-            }, 3500);
+            this.studentService
+              .updateMarkById('vac', this.id, mark)
+              .subscribe((result) => {
+                if (result.message === 'Mark Updated!') {
+                  this.messageService.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: 'Activity Added, Mark Updated!',
+                  });
+                  window.setTimeout(() => {
+                    this.isLoading = false;
+                    this.router.navigate([
+                      `s/${this.id}/a/${res.activity._id}`,
+                    ]);
+                  }, 3500);
+                } else {
+                  return this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail:
+                      'Activity Added But not Updated, Delete this and try later!',
+                  });
+                }
+              });
           } else {
             this.messageService.add({
               severity: 'error',
@@ -126,12 +142,33 @@ export class VacComponent implements OnInit {
       this.studentService
         .updateStudentActivity(form, this.aid)
         .subscribe((res) => {
+          if (form.mark !== this.formValues.mark) {
+            const previousMark = 0 - this.formValues.mark;
+            this.studentService
+              .updateMarkById('vac', this.id, previousMark)
+              .subscribe((res) => {
+                if (res.message === 'Mark Updated!') {
+                  this.studentService
+                    .updateMarkById('vac', this.id, form.mark)
+                    .subscribe((res) => {
+                      if (res.message === 'Mark Updated!') {
+                        this.messageService.add({
+                          severity: 'success',
+                          summary: 'Success',
+                          detail: 'Activity, Mark Updated!',
+                        });
+                      } else {
+                        return this.messageService.add({
+                          severity: 'error',
+                          summary: 'Error',
+                          detail: 'Activity Mark not Updated!',
+                        });
+                      }
+                    });
+                }
+              });
+          }
           if (res.activity._id) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: res.message,
-            });
             window.setTimeout(() => {
               this.isLoading = false;
               this.router.navigate([`s/${this.id}/a/${res.activity._id}`]);

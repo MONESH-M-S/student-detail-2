@@ -79,6 +79,7 @@ export class NccComponent implements OnInit {
     }
 
     const f = this.activityForm.value;
+    const mark = f.mark;
 
     const formData = new FormData();
     if (this.editMode === false) {
@@ -96,15 +97,30 @@ export class NccComponent implements OnInit {
         .uploadStudentActivity(this.id, formData)
         .subscribe((res) => {
           if (res.activity._id) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: res.message,
-            });
-            window.setTimeout(() => {
-              this.isLoading = false;
-              this.router.navigate([`s/${this.id}/a/${res.activity._id}`]);
-            }, 3500);
+            this.studentService
+              .updateMarkById('ncc', this.id, mark)
+              .subscribe((result) => {
+                if (result.message === 'Mark Updated!') {
+                  this.messageService.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: 'Activity Added, Mark Updated!',
+                  });
+                  window.setTimeout(() => {
+                    this.isLoading = false;
+                    this.router.navigate([
+                      `s/${this.id}/a/${res.activity._id}`,
+                    ]);
+                  }, 3500);
+                } else {
+                  return this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail:
+                      'Activity Added But not Updated, Delete this and try later!',
+                  });
+                }
+              });
           } else {
             this.messageService.add({
               severity: 'error',
@@ -127,12 +143,33 @@ export class NccComponent implements OnInit {
       this.studentService
         .updateStudentActivity(form, this.aid)
         .subscribe((res) => {
+          if (form.mark !== this.formValues.mark) {
+            const previousMark = 0 - this.formValues.mark;
+            this.studentService
+              .updateMarkById('ncc', this.id, previousMark)
+              .subscribe((res) => {
+                if (res.message === 'Mark Updated!') {
+                  this.studentService
+                    .updateMarkById('ncc', this.id, form.mark)
+                    .subscribe((res) => {
+                      if (res.message === 'Mark Updated!') {
+                        this.messageService.add({
+                          severity: 'success',
+                          summary: 'Success',
+                          detail: 'Activity, Mark Updated!',
+                        });
+                      } else {
+                        return this.messageService.add({
+                          severity: 'error',
+                          summary: 'Error',
+                          detail: 'Activity Mark not Updated!',
+                        });
+                      }
+                    });
+                }
+              });
+          }
           if (res.activity._id) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: res.message,
-            });
             window.setTimeout(() => {
               this.isLoading = false;
               this.router.navigate([`s/${this.id}/a/${res.activity._id}`]);
@@ -178,8 +215,12 @@ export class NccComponent implements OnInit {
         this.activityForm.get('name').setValue(this.formValues.name);
         this.activityForm.get('location').setValue(this.formValues.location);
         this.activityForm.get('position').setValue(this.formValues.position);
-        this.activityForm.get('startDate').setValue(this.formValues.startDate);
-        this.activityForm.get('endDate').setValue(this.formValues.endDate);
+        this.activityForm
+          .get('startDate')
+          .setValue(new Date(this.formValues.startDate));
+        this.activityForm
+          .get('endDate')
+          .setValue(new Date(this.formValues.endDate));
         this.activityForm.get('mark').setValue(this.formValues.mark);
         this.imageDisplay = this.formValues.image;
       });
