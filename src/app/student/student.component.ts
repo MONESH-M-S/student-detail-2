@@ -17,6 +17,7 @@ export class StudentComponent implements OnInit {
   userData: User;
   userActivity: any;
   isActivitiesAvailable = false;
+  deletedActivity: any;
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService,
@@ -81,33 +82,60 @@ export class StudentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((res) => {
       if (res === 'Delete') {
-        this.studentService
-          .deleteStudentUploadedActivity(id)
-          .subscribe((res) => {
-            if (res.activityId !== null) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: res.message,
+        this.studentService.getActivityById(id).subscribe((res) => {
+          if (res.activity) {
+            this.deletedActivity = res.activity;
+            this.studentService
+              .deleteStudentUploadedActivity(id)
+              .subscribe((res) => {
+                if (res.activityId !== null) {
+                  const type = this.deletedActivity.type;
+                  const mark = 0 - this.deletedActivity.mark;
+                  const creator = this.deletedActivity.creator;
+                  this.studentService
+                    .updateMarkById(type, creator, mark)
+                    .subscribe((res) => {
+                      if (res.message === 'Mark Updated!') {
+                        this.messageService.add({
+                          severity: 'success',
+                          summary: 'Success',
+                          detail: 'Activity Deleted!',
+                        });
+                        this.studentService
+                          .getStudentUploadedActivity(this.id)
+                          .subscribe((res) => {
+                            if (res.activities !== null) {
+                              this.isActivitiesAvailable = true;
+                              this.userActivity = res.activities;
+                            } else {
+                              this.isActivitiesAvailable = false;
+                            }
+                          });
+                      } else {
+                        this.messageService.add({
+                          severity: 'error',
+                          summary: 'Error',
+                          detail:
+                            'Activity deleted, Mark Not updated Contact Admin!',
+                        });
+                      }
+                    });
+                } else {
+                  this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: 'Error, Activity not deleted!',
+                  });
+                }
               });
-              this.studentService
-                .getStudentUploadedActivity(this.id)
-                .subscribe((res) => {
-                  if (res.activities !== null) {
-                    this.isActivitiesAvailable = true;
-                    this.userActivity = res.activities;
-                  } else {
-                    this.isActivitiesAvailable = false;
-                  }
-                });
-            } else {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: res.message,
-              });
-            }
-          });
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Error, Cannot be deleted contact admin',
+            });
+          }
+        });
       }
     });
   }
