@@ -1,19 +1,24 @@
 <p-toast></p-toast>
 <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
 <section *ngIf="!isLoading">
-  <div class="buttons mt-5" *ngIf="isAdmin">
+  <div class="buttons mt-5">
     <div class="flex justify-content-end mr-5">
       <div class="button mr-3">
+        <button mat-raised-button (click)="changePassword()">
+          <mat-icon>cached</mat-icon> Change My Password
+        </button>
+      </div>
+      <div class="button mr-3" *ngIf="isAdmin">
         <button mat-flat-button color="primary" (click)="addNewAdmin()">
           <mat-icon>add</mat-icon> Add Admin
         </button>
       </div>
-      <div class="button mr-3">
+      <div class="button mr-3" *ngIf="isAdmin">
         <button mat-flat-button color="accent" (click)="showAdmins()">
           <mat-icon>supervisor_account</mat-icon> Show All Admin
         </button>
       </div>
-      <div class="button">
+      <div class="button" *ngIf="isAdmin">
         <button mat-flat-button color="warn" (click)="showAllMarks()">
           <mat-icon>insert_drive_file</mat-icon> Show All Marks
         </button>

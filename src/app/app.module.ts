@@ -37,6 +37,8 @@ import { DetailedTableComponent } from './admin/admin-home/student-detail/detail
 import { LockConformationDialogComponent } from './admin/admin-home/student-detail/detailed-table/lock-conformation-dialog/lock-conformation-dialog.component';
 import { ShowAllMarksComponent } from './admin/admin-home/show-all-marks/show-all-marks.component';
 import { MarkSplitupComponent } from './admin/admin-home/student-detail/mark-splitup/mark-splitup.component';
+import { OldPasswordComponent } from './admin/admin-home/change-password/old-password/old-password.component';
+import { NewPasswordComponent } from './admin/admin-home/change-password/new-password/new-password.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { MarkSplitupComponent } from './admin/admin-home/student-detail/mark-spl
     DetailedTableComponent,
     LockConformationDialogComponent,
     ShowAllMarksComponent,
-    MarkSplitupComponent
+    MarkSplitupComponent,
+    OldPasswordComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,

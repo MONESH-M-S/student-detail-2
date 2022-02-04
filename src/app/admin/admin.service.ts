@@ -10,7 +10,7 @@ import { Admin } from './admin.model';
 export class AdminService {
   BACKEND_URL = environment.backend_url;
   isLoggedIn = false;
-  
+
   constructor(private http: HttpClient) {}
 
   adminLogin(form: { email: string; password: string }) {
@@ -61,6 +61,11 @@ export class AdminService {
     return this.http.get<{ admins: Admin[]; message: string }>(
       `${this.BACKEND_URL}admin/`
     );
+  }
+
+  updateAdminPassword(id: string, password: string) {
+    const pwd = { password: password };
+    return this.http.put<{admin: Admin, message: string}>(`${this.BACKEND_URL}admin/${id}`, pwd);
   }
 
   updateMarkById(type: string, id: string, mark: number) {

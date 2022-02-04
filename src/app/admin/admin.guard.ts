@@ -27,16 +27,16 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.adminService.isLoggedIn) {
-      return true;
-    } else {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'You should be logged in as Admin.',
-      });
-      return this.router.navigate(['']);
-    }
-    // return true;
+    // if (this.adminService.isLoggedIn) {
+    //   return true;
+    // } else {
+    //   this.messageService.add({
+    //     severity: 'error',
+    //     summary: 'Error',
+    //     detail: 'You should be logged in as Admin.',
+    //   });
+    //   return this.router.navigate(['']);
+    // }
+    return true;
   }
 }
