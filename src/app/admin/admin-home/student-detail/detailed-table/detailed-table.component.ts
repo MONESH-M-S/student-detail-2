@@ -31,7 +31,7 @@ export class DetailedTableComponent implements OnInit {
       if (params['id']) {
         this.id = params['id'];
         this.adminService.getStudentActivitesById(this.id).subscribe((res) => {
-          if (res.activities.length > 0) {
+          if (res.activities?.length > 0) {
             this.isActivitiesAvailable = true;
             this.activityArray = res.activities;
           }
