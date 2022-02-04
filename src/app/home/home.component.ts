@@ -37,7 +37,8 @@ export class HomeComponent implements OnInit {
           summary: res.message,
         });
       }
-      return this.router.navigate([`s/${res.user[0]._id}`])
+      this.homeService.isLoggedIn = true;
+      return this.router.navigate([`s/${res.user[0]._id}`]);
     });
   }
 

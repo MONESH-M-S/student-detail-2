@@ -8,6 +8,8 @@ import { User } from './user.model';
 })
 export class HomeService {
   BACKEND_URL = environment.backend_url;
+  isLoggedIn = false
+
   constructor(private http: HttpClient) {}
 
   userLogin(form: { email: string; password: string }) {

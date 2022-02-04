@@ -9,6 +9,8 @@ import { Admin } from './admin.model';
 })
 export class AdminService {
   BACKEND_URL = environment.backend_url;
+  isLoggedIn = false;
+  
   constructor(private http: HttpClient) {}
 
   adminLogin(form: { email: string; password: string }) {

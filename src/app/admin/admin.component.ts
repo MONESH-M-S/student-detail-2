@@ -33,6 +33,7 @@ export class AdminComponent implements OnInit {
           summary: res.message,
         });
       } else {
+        this.adminService.isLoggedIn = true;
         this.router.navigate([`admin/${res.admin[0]?.name}`]);
       }
     });

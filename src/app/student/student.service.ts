@@ -8,6 +8,8 @@ import { User } from '../home/user.model';
 })
 export class StudentService {
   BACKEND_URL = environment.backend_url;
+  isLoggedIn = false;
+
   constructor(private http: HttpClient) {}
 
   studentDetailUpdatePasswordCheck(data: { email: string; password: string }) {
