@@ -14,9 +14,8 @@
       </div>
       <mat-card-actions>
         <div class="content">
-          <p>Paper Presented - {{ paperCount }}</p>
-          <p>Project Presented - {{ projectCount }}</p>
-          <p>Total Point - {{ total }}</p>
+          <p>Total Mark - {{ total }}</p>
+          <p>Obtained Mark - {{ obtained }}</p>
         </div>
       </mat-card-actions>
     </mat-card>
@@ -37,7 +36,7 @@
             <mat-icon>keyboard_arrow_right</mat-icon>
           </button>
         </div>
-        <app-detailed-table></app-detailed-table>
+        <app-detailed-table (activityDeleted)="activityDeleted($event)"></app-detailed-table>
       </mat-card>
     </div>
   </div>

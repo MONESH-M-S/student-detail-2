@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -12,6 +12,7 @@ import { LockConformationDialogComponent } from './lock-conformation-dialog/lock
   styleUrls: ['./detailed-table.component.scss'],
 })
 export class DetailedTableComponent implements OnInit {
+  @Output() activityDeleted = new EventEmitter();
   id: string;
   activityArray: any;
   isActivitiesAvailable = false;
@@ -106,6 +107,7 @@ export class DetailedTableComponent implements OnInit {
               this.adminService
                 .deleteStudentUploadedActivity(id)
                 .subscribe((res) => {
+                  this.activityDeleted.emit('Deleted');
                   if (res.activityId !== null) {
                     const type = this.deletedActivity.type;
                     const mark = 0 - this.deletedActivity.mark;

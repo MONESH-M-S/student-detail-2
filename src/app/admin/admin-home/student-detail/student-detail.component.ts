@@ -11,8 +11,7 @@ import { AdminService } from '../../admin.service';
 export class StudentDetailComponent implements OnInit {
   id: string;
   isLoading = false;
-  paperCount: number = 0;
-  projectCount: number = 0;
+  obtained: number = 0;
   total: number = 0;
   studentDetail: any;
 
@@ -34,6 +33,12 @@ export class StudentDetailComponent implements OnInit {
       this.studentDetail = res?.user[0];
       this.isLoading = false;
     });
+    this.adminService.getMarkById(this.id).subscribe((res) => {
+      if (res.mark) {
+        this.total = res.mark[0].total;
+        this.obtained = res.mark[0].obtained;
+      }
+    });
   }
 
   goBack() {
@@ -42,5 +47,14 @@ export class StudentDetailComponent implements OnInit {
 
   onRouteMarkSplitup() {
     this.router.navigate([`admin/s/mark-splitup/${this.id}`]);
+  }
+
+  activityDeleted(event: any) {
+    this.adminService.getMarkById(this.id).subscribe((res) => {
+      if (res.mark) {
+        this.total = res.mark[0].total;
+        this.obtained = res.mark[0].obtained;
+      }
+    });
   }
 }
