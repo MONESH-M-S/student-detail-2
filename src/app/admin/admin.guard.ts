@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -15,7 +16,8 @@ import { AdminService } from './admin.service';
 export class AdminGuard implements CanActivate {
   constructor(
     private adminService: AdminService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -33,7 +35,7 @@ export class AdminGuard implements CanActivate {
         summary: 'Error',
         detail: 'You should be logged in as Admin.',
       });
-      return false;
+      return this.router.navigate(['']);
     }
     // return true;
   }

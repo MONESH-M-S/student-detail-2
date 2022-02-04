@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -15,7 +16,8 @@ import { HomeService } from '../home/home.service';
 export class StudentGuard implements CanActivate {
   constructor(
     private homeService: HomeService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   canActivate(
@@ -34,7 +36,7 @@ export class StudentGuard implements CanActivate {
         summary: 'Error',
         detail: 'You Should be logged in.',
       });
-      return false;
+      return this.router.navigate(['']);
     }
     // return true;
   }
