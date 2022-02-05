@@ -39,6 +39,7 @@ import { ShowAllMarksComponent } from './admin/admin-home/show-all-marks/show-al
 import { MarkSplitupComponent } from './admin/admin-home/student-detail/mark-splitup/mark-splitup.component';
 import { OldPasswordComponent } from './admin/admin-home/change-password/old-password/old-password.component';
 import { NewPasswordComponent } from './admin/admin-home/change-password/new-password/new-password.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,7 @@ import { NewPasswordComponent } from './admin/admin-home/change-password/new-pas
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [MessageService],
+  providers: [MessageService, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
