@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backend_url: 'https://student-detail-2.herokuapp.com/',
+  backend_url: 'https://student-detail-sap-2.herokuapp.com/',
   // backend_url: 'http://localhost:3000/'
 };
 
